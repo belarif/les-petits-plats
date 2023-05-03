@@ -1,0 +1,19 @@
+{
+  "name": "les-petits-plats",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch sass/main.scss:css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/belarif/les-petits-plats.git"
+  },
+  "author": "hocine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/belarif/les-petits-plats/issues"
+  },
+  "homepage": "https://github.com/belarif/les-petits-plats#readme"
+}
