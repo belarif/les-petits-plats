@@ -1,5 +1,5 @@
 .header-page {
-  padding: 30px 0;
+  padding: 30px 0 15px 0;
   text-align: center;
 }
 .header-page .logo {
@@ -17,7 +17,7 @@
 }
 
 .ingredient-cards {
-  margin-top: 40px;
+  margin-top: 25px;
   margin-bottom: 60px;
 }
 .ingredient-cards .card-header {
