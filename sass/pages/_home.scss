@@ -1,25 +1,30 @@
+body {
+    margin: auto;
+    max-width: 1400px;
+}
+
 .header-page {
     padding: 30px 0;
     text-align: center;
-
+    
     .logo {
         width: 220px;
         padding-bottom: 20px;
     }
-
+    
     .input-group {
         height: 60px;
         input, span {
             background-color: #EEEEEE;
         }
     }
-
+    
     input[type="search"] {
         border-right: none;
     }
 }
 
-.ingredient-cards {
+.recipe-cards {
     margin-top: 40px;
     margin-bottom: 60px;
 
@@ -35,22 +40,38 @@
         justify-content: space-between;
         align-items: center;
 
-        .bi-clock {
-            margin-right: 6px;
+        .bi-clock b {
+            margin-left: 6px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
         }
     }
 
-    .ingredients p {
+    .recipes p {
         margin: 0;
     }
 
-    .ingredient-description {
+    .recipe-description {
         display: flex;
         flex-direction: row;
-        gap: 40px;
+        gap: 10px;
         font-size: 14px;
-    }
 
+        .recipes {
+            padding-left: 0;
+            width: 50%;
+
+            li {
+                display: block;
+            }
+        }
+
+        p {
+            width: 50%;
+        }
+    }
 }
 
 
