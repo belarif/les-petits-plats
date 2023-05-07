@@ -52,11 +52,18 @@ function addRecipesDiv(recipesUlElt, recipeAndDescriptionDivElt) {
 function addRecipesLi(recipesUlElt, ingredients) {
     ingredients.forEach(ingredient => {
         const recipesLiELt = document.createElement("li");
+        const nameIngredientElt = document.createElement("b");
+        recipesLiELt.appendChild(nameIngredientElt);
+        nameIngredientElt.textContent = ingredient.ingredient;
+
         if (ingredient.unit) {
-            recipesLiELt.textContent = ingredient.ingredient + ` : ` + ingredient.quantity + ` ` + ingredient.unit;
-        } else {
-            recipesLiELt.textContent = ingredient.ingredient + ` : ` + ingredient.quantity;
+            const quantityElt = document.createTextNode(" : " + ingredient.quantity  + ` ` + ingredient.unit);
+            recipesLiELt.appendChild(quantityElt);
+        } else if (ingredient.quantity) {
+            const quantityElt = document.createTextNode(" : " + ingredient.quantity);
+            recipesLiELt.appendChild(quantityElt);
         }
+        
         recipesUlElt.appendChild(recipesLiELt);
     });
 }
