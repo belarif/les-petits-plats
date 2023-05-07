@@ -32,37 +32,21 @@
       </header>
 
       <!-- filters -->
-      <section>
-        <div class="btn-group">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-            Ingrédients
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-            Appareils
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-          </ul>
-        </div>
-        <div class="btn-group">
-          <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-            Ustensiles
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-          </ul>
-        </div>
+      <section class="filter">
+          <div class="dropdown-wrapper">
+            <input type="checkbox" class="dropdown-chk" id="check1"/>
+            <label for="check1" class="dropdown-label">Ingrédients</label>
+            <input type="search" class="search-ingredient" placeholder="Rechercher un ingredient">
+            <div class="chevrons">
+              <i class="bi bi-chevron-up"></i>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <ul class="dropdown-ul">
+              <li>test</li>
+              <li>test</li>
+              <li>test</li>
+            </ul>
+          </div>
       </section>
 
       <!-- recipe cards -->

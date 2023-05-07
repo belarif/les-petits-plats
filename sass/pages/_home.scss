@@ -74,6 +74,94 @@ body {
     }
 }
 
+.dropdown-wrapper {
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    appearance: none;
+    height: 50px;
+    width: 240px;
+    background-color: #0d6efd;
+    color: #FFF;
+    font-size: inherit;
+    cursor: pointer;
+
+    .search-ingredient {
+        width: 80%;
+        background-color: #0d6efd;
+        border: none;
+    }
+
+    input[type="checkbox"] {
+        display: none;
+    }
+
+    .chevrons {
+        position: absolute;
+        right: 10px;
+        bottom: 6px;
+        width: 40px;
+        height: 40px;
+
+        .bi-chevron-up {
+            display: none;
+        }
+
+        .bi-chevron-up, 
+        .bi-chevron-down {
+            position: absolute;
+            right: 10px;
+            bottom: 6px;
+        }
+    }
+    
+    .dropdown-ul {
+        position: absolute;
+        left: 0;
+        top: 50px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        opacity: 0;
+        transition: .3s;
+        width: 100%;
+        color: #FFF;
+
+        li {
+            margin-top: 0;
+            padding: 0 10px 10px 10px;
+            background-color: #0d6efd;
+        }
+
+        li:last-child {
+            border-radius: 0 0 5px 5px;
+        }
+
+        a {
+            display: block;
+            padding-left: 5px;
+            text-decoration: none;
+            color: #FFF;
+        }        
+    }
+
+    .search-ingredient {
+        margin-left: 10px;
+        display: none;
+        position: absolute;
+        height: 100%;
+    }
+
+    .dropdown-label {
+        position: relative;
+        border-radius: 5px;
+        padding: 10px;
+        display: block;
+        cursor: pointer;
+        width: 80%;
+    }
+}
+
 
 
 
