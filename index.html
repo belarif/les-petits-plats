@@ -33,7 +33,15 @@
 
       <!-- filters -->
       <section class="filter">
-         <!-- filter by ingredient --> 
+
+        <div class="ingredient">
+          <button type="button" class="btn btn-primary">
+            badge 1
+            <span class="badge">
+              <i class="bi bi-x-circle"></i>
+            </span> 
+          </button>
+           <!-- filter by ingredient --> 
           <div class="dropdown-wrapper-ingredient">
             <input type="checkbox" class="dropdown-chk" id="check1"/>
             <label for="check1" class="dropdown-label-ingredient">Ingrédients</label>
@@ -48,7 +56,15 @@
               <li>test</li>
             </ul>
           </div>
+        </div>
 
+        <div class="appliance">
+          <button type="button" class="btn btn-success">
+            badge 2 
+            <span class="badge">
+              <i class="bi bi-x-circle"></i>
+            </span> 
+          </button>
           <!-- filter by appliance --> 
           <div class="dropdown-wrapper-appliance">
             <input type="checkbox" class="dropdown-chk" id="check2"/>
@@ -64,12 +80,31 @@
               <li>test</li>
             </ul>
           </div>
-
-
-
-          
-
-
+        </div>
+        
+        <div class="utensil">
+          <button type="button" class="btn btn-danger">
+            badge 3
+            <span class="badge">
+              <i class="bi bi-x-circle"></i>
+            </span> 
+          </button>
+          <!-- filter by ustensil --> 
+          <div class="dropdown-wrapper-utensil">
+            <input type="checkbox" class="dropdown-chk" id="check3"/>
+            <label for="check3" class="dropdown-label-utensil">Ustensils</label>
+            <input type="search" class="search-utensil" placeholder="Rechercher un ustensil">
+            <div class="chevrons-utensil">
+              <i class="bi bi-chevron-up chevron-up-utensil"></i>
+              <i class="bi bi-chevron-down chevron-down-utensil"></i>
+            </div>
+            <ul class="dropdown-ul-utensil">
+              <li>test</li>
+              <li>test</li>
+              <li>test</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <!-- recipe cards -->
@@ -78,6 +113,7 @@
         </div>
       </section>
     </main>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="data/recipes.js"></script>
     <script src="js/factories/recipeCards.js"></script>

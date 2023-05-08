@@ -22,49 +22,15 @@ body {
   border-right: none;
 }
 
-.recipe-cards {
-  margin: 40px 0 60px 0;
-}
-.recipe-cards .card-header {
-  padding: 0;
-  width: 100%;
-  height: 200px;
-}
-.recipe-cards .card-body header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.recipe-cards .card-body header .bi-clock b {
-  margin-left: 6px;
-}
-.recipe-cards .card-body header h3 {
-  font-size: 1.1rem;
-}
-.recipe-cards .recipes p {
-  margin: 0;
-}
-.recipe-cards .recipe-description {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  font-size: 14px;
-}
-.recipe-cards .recipe-description .recipes {
-  padding-left: 0;
-  width: 50%;
-}
-.recipe-cards .recipe-description .recipes li {
-  display: block;
-}
-.recipe-cards .recipe-description p {
-  width: 50%;
-}
-
 .filter {
   display: flex;
   gap: 15px;
+}
+.filter .ingredient > button,
+.filter .appliance > button,
+.filter .utensil > button {
+  margin-bottom: 10px;
+  display: none;
 }
 .filter .dropdown-wrapper-ingredient {
   position: relative;
@@ -89,11 +55,11 @@ body {
   width: 40px;
   height: 40px;
 }
-.filter .dropdown-wrapper-ingredient .chevrons-ingredient .chevron-up {
+.filter .dropdown-wrapper-ingredient .chevrons-ingredient .bi-chevron-up {
   display: none;
 }
-.filter .dropdown-wrapper-ingredient .chevrons-ingredient .chevron-up,
-.filter .dropdown-wrapper-ingredient .chevrons-ingredient .chevron-down {
+.filter .dropdown-wrapper-ingredient .chevrons-ingredient .bi-chevron-up,
+.filter .dropdown-wrapper-ingredient .chevrons-ingredient .bi-chevron-down {
   position: absolute;
   right: 10px;
   bottom: 6px;
@@ -167,8 +133,8 @@ body {
 .filter .dropdown-wrapper-appliance .chevrons-appliance .bi-chevron-up {
   display: none;
 }
-.filter .dropdown-wrapper-appliance .chevrons-appliance .chevron-up,
-.filter .dropdown-wrapper-appliance .chevrons-appliance .chevron-down {
+.filter .dropdown-wrapper-appliance .chevrons-appliance .bi-chevron-up,
+.filter .dropdown-wrapper-appliance .chevrons-appliance .bi-chevron-down {
   position: absolute;
   right: 10px;
   bottom: 6px;
@@ -215,6 +181,121 @@ body {
   display: block;
   width: 80%;
   cursor: pointer;
+}
+.filter .dropdown-wrapper-utensil {
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  appearance: none;
+  height: 50px;
+  width: 240px;
+  background-color: #dc3545;
+  color: #FFF;
+  font-size: inherit;
+  z-index: 1;
+  cursor: pointer;
+}
+.filter .dropdown-wrapper-utensil input[type=checkbox] {
+  display: none;
+}
+.filter .dropdown-wrapper-utensil .chevrons-utensil {
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+  width: 40px;
+  height: 40px;
+}
+.filter .dropdown-wrapper-utensil .chevrons-utensil .bi-chevron-up {
+  display: none;
+}
+.filter .dropdown-wrapper-utensil .chevrons-utensil .bi-chevron-up,
+.filter .dropdown-wrapper-utensil .chevrons-utensil .bi-chevron-down {
+  position: absolute;
+  right: 10px;
+  bottom: 6px;
+}
+.filter .dropdown-wrapper-utensil .dropdown-ul-utensil {
+  position: absolute;
+  left: 0;
+  top: 50px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  color: #FFF;
+  opacity: 0;
+  transition: 0.3s;
+  list-style: none;
+}
+.filter .dropdown-wrapper-utensil .dropdown-ul-utensil li {
+  margin-top: 0;
+  padding: 0 10px 10px 10px;
+  background-color: #dc3545;
+}
+.filter .dropdown-wrapper-utensil .dropdown-ul-utensil li:last-child {
+  border-radius: 0 0 5px 5px;
+}
+.filter .dropdown-wrapper-utensil .dropdown-ul-utensil a {
+  display: block;
+  padding-left: 5px;
+  text-decoration: none;
+  color: #FFF;
+}
+.filter .dropdown-wrapper-utensil .search-utensil {
+  position: absolute;
+  margin-left: 10px;
+  border: none;
+  height: 100%;
+  width: 80%;
+  display: none;
+  background-color: #dc3545;
+}
+.filter .dropdown-wrapper-utensil .dropdown-label-utensil {
+  position: relative;
+  border-radius: 5px;
+  padding: 10px;
+  display: block;
+  width: 80%;
+  cursor: pointer;
+}
+
+.recipe-cards {
+  margin: 40px 0 60px 0;
+}
+.recipe-cards .card-header {
+  padding: 0;
+  width: 100%;
+  height: 200px;
+}
+.recipe-cards .card-body header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.recipe-cards .card-body header .bi-clock b {
+  margin-left: 6px;
+}
+.recipe-cards .card-body header h3 {
+  font-size: 1.1rem;
+}
+.recipe-cards .recipes p {
+  margin: 0;
+}
+.recipe-cards .recipe-description {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 14px;
+}
+.recipe-cards .recipe-description .recipes {
+  padding-left: 0;
+  width: 50%;
+}
+.recipe-cards .recipe-description .recipes li {
+  display: block;
+}
+.recipe-cards .recipe-description p {
+  width: 50%;
 }
 
 /*# sourceMappingURL=style.css.map */

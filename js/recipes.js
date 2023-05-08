@@ -27,6 +27,15 @@ const searchApplianceElt = document.querySelector(".search-appliance");
 const chevronUpApplianceElt = document.querySelector(".chevron-up-appliance");
 const chevronDownApplianceElt = document.querySelector(".chevron-down-appliance");
 
+// utensil
+const dropdownUtensilUlElt = document.querySelector(".dropdown-ul-utensil");
+const dropdownUtensilElt = document.querySelector(".dropdown-wrapper-utensil");
+const chevronsUtensilElt = document.querySelector(".chevrons-utensil");
+const filterUtensilLabelElt = document.querySelector(".dropdown-label-utensil");
+const searchUtensilElt = document.querySelector(".search-utensil");
+const chevronUpUtensilElt = document.querySelector(".chevron-up-utensil");
+const chevronDownUtensilElt = document.querySelector(".chevron-down-utensil");
+
 function openDropdownList(dropdownElt, dropdownUlElt, filterLabelElt, searchElt, chevronUpElt, chevronDownElt) {
     dropdownUlElt.style.opacity = "1";
     dropdownElt.style.borderRadius = "5px 5px 0 0";
@@ -71,7 +80,20 @@ function navigateApplianceDropdown() {
     });
 }
 
+function navigateUtensilDropdown() {
+    let direction = false;
+    chevronsUtensilElt.addEventListener("click", () => {
+        if (direction === false) {
+            openDropdownList(dropdownUtensilElt, dropdownUtensilUlElt, filterUtensilLabelElt, searchUtensilElt, chevronUpUtensilElt, chevronDownUtensilElt);
+            direction = true;
+        } else {
+            closeDropdownList(dropdownUtensilElt, dropdownUtensilUlElt, filterUtensilLabelElt, searchUtensilElt, chevronUpUtensilElt, chevronDownUtensilElt);
+            direction = false;
+        }
+    });
+}
+
 navigateIngredientDropdown();
 navigateApplianceDropdown();
-
+navigateUtensilDropdown();
 displayRecipesData();
