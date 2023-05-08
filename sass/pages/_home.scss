@@ -1,27 +1,151 @@
+body {
+    margin: auto;
+    max-width: 1400px;
+}
+
 .header-page {
     padding: 30px 0;
     text-align: center;
-
+    
     .logo {
-        width: 220px;
         padding-bottom: 20px;
+        width: 220px;
     }
-
+    
     .input-group {
         height: 60px;
-        input, span {
+
+        input, 
+        span {
             background-color: #EEEEEE;
         }
     }
-
+    
     input[type="search"] {
         border-right: none;
     }
 }
 
-.ingredient-cards {
-    margin-top: 40px;
-    margin-bottom: 60px;
+.filter {
+    display: flex;
+    gap: 15px;
+
+    .ingredient {
+        .dropdown-wrapper,
+        .search,
+        .dropdown-ul {
+            background-color: $primary;
+        }
+    }
+
+    .appliance {
+        .dropdown-wrapper,
+        .search,
+        .dropdown-ul {
+            background-color: $success;
+        }
+    }
+
+    .utensil {
+        .dropdown-wrapper,
+        .search,
+        .dropdown-ul {
+            background-color: $danger;
+        }
+    }
+
+    .ingredient > button,
+    .appliance > button,
+    .utensil > button {
+        margin-bottom: 10px;
+        display: none;
+    }
+
+    .dropdown-wrapper {
+        position: relative;
+        border: none;
+        border-radius: 5px;
+        appearance: none;
+        height: 50px;
+        width: 240px;
+        color: $white;
+        font-size: inherit;
+        z-index: 1;
+        cursor: pointer;
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        .chevrons {
+            position: absolute;
+            right: 10px;
+            bottom: 6px;
+            width: 40px;
+            height: 40px;
+    
+            .bi-chevron-up {
+                display: none;
+            }
+    
+            .bi-chevron-up, 
+            .bi-chevron-down {
+                position: absolute;
+                right: 10px;
+                bottom: 6px;
+            }
+        }
+        
+        .dropdown-ul {
+            position: absolute;
+            left: 0;
+            top: 50px;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            color: $white;
+            opacity: 0;
+            transition: .3s;
+            list-style: none;
+            li {
+                margin-top: 0;
+                padding: 0 10px 10px 10px;
+            }
+            
+            li:last-child {
+                border-radius: 0 0 5px 5px;
+            }
+
+            a {
+                display: block;
+                padding-left: 5px;
+                text-decoration: none;
+                color: $white;
+            }        
+        }
+    
+        .search {
+            position: absolute;
+            margin-left: 10px;
+            border: none;
+            height: 100%;
+            width: 80%;
+            display: none;
+        }
+    
+        .dropdown-label {
+            position: relative;
+            border-radius: 5px;
+            padding: 10px;
+            display: block;
+            width: 80%;
+            cursor: pointer;
+        }
+    }
+}
+
+.recipe-cards {
+    margin: 40px 0 60px 0;
 
     .card-header {
         padding: 0;
@@ -35,25 +159,36 @@
         justify-content: space-between;
         align-items: center;
 
-        .bi-clock {
-            margin-right: 6px;
+        .bi-clock b {
+            margin-left: 6px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
         }
     }
 
-    .ingredients p {
+    .recipes p {
         margin: 0;
     }
 
-    .ingredient-description {
+    .recipe-description {
         display: flex;
         flex-direction: row;
-        gap: 40px;
+        gap: 10px;
         font-size: 14px;
+
+        .recipes {
+            padding-left: 0;
+            width: 50%;
+
+            li {
+                display: block;
+            }
+        }
+
+        p {
+            width: 50%;
+        }
     }
-
 }
-
-
-
-
-

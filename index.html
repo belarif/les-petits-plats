@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <main class="container">
+    <main>
       <!-- entete -->
       <header class="header-page">
         <img class="logo" src="assets/logo/logo.png" alt="logo les petits plats">
@@ -32,183 +32,90 @@
       </header>
 
       <!-- filters -->
-      <section>
-        <div class="btn-group">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-            Ingrédients
+      <section class="filter">
+        <!-- filter by ingredient --> 
+        <div class="ingredient">
+          <button type="button" class="btn btn-primary">
+            badge 1
+            <span class="badge">
+              <i class="bi bi-x-circle"></i>
+            </span> 
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-          </ul>
+          <div class="dropdown-wrapper">
+            <input type="checkbox" class="dropdown-chk" id="check1"/>
+            <label for="check1" class="dropdown-label">Ingrédients</label>
+            <input type="search" class="search" placeholder="Rechercher un ingredient">
+            <div class="chevrons">
+              <i class="bi bi-chevron-up"></i>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <ul class="dropdown-ul">
+              <li>test</li>
+              <li>test</li>
+              <li>test</li>
+            </ul>
+          </div>
         </div>
-        <div class="btn-group">
-          <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-            Appareils
+
+        <!-- filter by appliance --> 
+        <div class="appliance">
+          <button type="button" class="btn btn-success">
+            badge 2 
+            <span class="badge">
+              <i class="bi bi-x-circle"></i>
+            </span> 
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-          </ul>
+          <div class="dropdown-wrapper">
+            <input type="checkbox" class="dropdown-chk" id="check2"/>
+            <label for="check2" class="dropdown-label">Appareils</label>
+            <input type="search" class="search" placeholder="Rechercher un appareil">
+            <div class="chevrons">
+              <i class="bi bi-chevron-up"></i>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <ul class="dropdown-ul">
+              <li>test</li>
+              <li>test</li>
+              <li>test</li>
+            </ul>
+          </div>
         </div>
-        <div class="btn-group">
-          <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false">
-            Ustensiles
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-            <li><a class="dropdown-item" href="#">Menu item</a></li>
-          </ul>
+        
+        <!-- filter by ustensil -->
+        <div class="utensil">
+          <button type="button" class="btn btn-danger">
+            badge 3
+            <span class="badge">
+              <i class="bi bi-x-circle"></i>
+            </span> 
+          </button> 
+          <div class="dropdown-wrapper">
+            <input type="checkbox" class="dropdown-chk" id="check3"/>
+            <label for="check3" class="dropdown-label">Ustensils</label>
+            <input type="search" class="search" placeholder="Rechercher un ustensil">
+            <div class="chevrons">
+              <i class="bi bi-chevron-up"></i>
+              <i class="bi bi-chevron-down"></i>
+            </div>
+            <ul class="dropdown-ul">
+              <li>test</li>
+              <li>test</li>
+              <li>test</li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <!-- ingredient cards -->
-      <section class="ingredient-cards">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <img src="" class="card-img-top" alt="">
-              </div>
-              <div class="card-body">
-                <header>
-                  <h3 class="card-title">Tarte au citron</h3>
-                  <b><i class="bi bi-clock"></i>50 min</b>
-                </header>
-                <div class="ingredient-description">
-                  <div class="ingredients">
-                    <p class="card-text"><b>Pate brisée: </b>200gr</p>
-                    <p class="card-text"><b>Sucre: </b>150gr</p>
-                    <p class="card-text"><b>Beure fondu: </b>100gr</p>
-                    <p class="card-text"><b>Oeuf: </b>3</p>
-                    <p class="card-text"><b>Citron </b></p>
-                  </div>
-                  <p class="card-text">This is a longer card with supporting.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <img src="" class="card-img-top" alt="">
-              </div>
-              <div class="card-body">
-                <header>
-                  <h3 class="card-title">Tarte au citron</h3>
-                  <b><i class="bi bi-clock"></i>50 min</b>
-                </header>
-                <div class="ingredient-description">
-                  <div class="ingredients">
-                    <p class="card-text"><b>Pate brisée: </b>200gr</p>
-                    <p class="card-text"><b>Sucre: </b>150gr</p>
-                    <p class="card-text"><b>Beure fondu: </b>100gr</p>
-                    <p class="card-text"><b>Oeuf: </b>3</p>
-                    <p class="card-text"><b>Citron </b></p>
-                  </div>
-                  <p class="card-text">This is a longer card with supporting.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <img src="" class="card-img-top" alt="">
-              </div>
-              <div class="card-body">
-                <header>
-                  <h3 class="card-title">Tarte au citron</h3>
-                  <b><i class="bi bi-clock"></i>50 min</b>
-                </header>
-                <div class="ingredient-description">
-                  <div class="ingredients">
-                    <p class="card-text"><b>Pate brisée: </b>200gr</p>
-                    <p class="card-text"><b>Sucre: </b>150gr</p>
-                    <p class="card-text"><b>Beure fondu: </b>100gr</p>
-                    <p class="card-text"><b>Oeuf: </b>3</p>
-                    <p class="card-text"><b>Citron </b></p>
-                  </div>
-                  <p class="card-text">This is a longer card with supporting.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <img src="" class="card-img-top" alt="">
-              </div>
-              <div class="card-body">
-                <header>
-                  <h3 class="card-title">Tarte au citron</h3>
-                  <b><i class="bi bi-clock"></i>50 min</b>
-                </header>
-                <div class="ingredient-description">
-                  <div class="ingredients">
-                    <p class="card-text"><b>Pate brisée: </b>200gr</p>
-                    <p class="card-text"><b>Sucre: </b>150gr</p>
-                    <p class="card-text"><b>Beure fondu: </b>100gr</p>
-                    <p class="card-text"><b>Oeuf: </b>3</p>
-                    <p class="card-text"><b>Citron </b></p>
-                  </div>
-                  <p class="card-text">This is a longer card with supporting.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <img src="" class="card-img-top" alt="">
-              </div>
-              <div class="card-body">
-                <header>
-                  <h3 class="card-title">Tarte au citron</h3>
-                  <b><i class="bi bi-clock"></i>50 min</b>
-                </header>
-                <div class="ingredient-description">
-                  <div class="ingredients">
-                    <p class="card-text"><b>Pate brisée: </b>200gr</p>
-                    <p class="card-text"><b>Sucre: </b>150gr</p>
-                    <p class="card-text"><b>Beure fondu: </b>100gr</p>
-                    <p class="card-text"><b>Oeuf: </b>3</p>
-                    <p class="card-text"><b>Citron </b></p>
-                  </div>
-                  <p class="card-text">This is a longer card with supporting.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <div class="card-header">
-                <img src="" class="card-img-top" alt="">
-              </div>
-              <div class="card-body">
-                <header>
-                  <h3 class="card-title">Tarte au citron</h3>
-                  <b><i class="bi bi-clock"></i>50 min</b>
-                </header>
-                <div class="ingredient-description">
-                  <div class="ingredients">
-                    <p class="card-text"><b>Pate brisée: </b>200gr</p>
-                    <p class="card-text"><b>Sucre: </b>150gr</p>
-                    <p class="card-text"><b>Beure fondu: </b>100gr</p>
-                    <p class="card-text"><b>Oeuf: </b>3</p>
-                    <p class="card-text"><b>Citron </b></p>
-                  </div>
-                  <p class="card-text">This is a longer card with supporting.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <!-- recipe cards -->
+      <section class="recipe-cards">
+        <div class="row row-cols-1 row-cols-md-3 g-4 row-card">
         </div>
       </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="data/recipes.js"></script>
+    <script src="js/factories/recipeCards.js"></script>
+    <script src="js/recipes.js"></script>
+    <script src="js/components/filters.js"></script>
   </body>
 </html>
