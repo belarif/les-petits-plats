@@ -8,13 +8,15 @@ body {
     text-align: center;
     
     .logo {
-        width: 220px;
         padding-bottom: 20px;
+        width: 220px;
     }
     
     .input-group {
         height: 60px;
-        input, span {
+
+        input, 
+        span {
             background-color: #EEEEEE;
         }
     }
@@ -25,8 +27,7 @@ body {
 }
 
 .recipe-cards {
-    margin-top: 40px;
-    margin-bottom: 60px;
+    margin: 40px 0 60px 0;
 
     .card-header {
         padding: 0;
@@ -74,93 +75,183 @@ body {
     }
 }
 
-.dropdown-wrapper {
-    position: relative;
-    border: none;
-    border-radius: 5px;
-    appearance: none;
-    height: 50px;
-    width: 240px;
-    background-color: #0d6efd;
-    color: #FFF;
-    font-size: inherit;
-    cursor: pointer;
+.filter {
+    display: flex;
+    gap: 15px;
 
-    .search-ingredient {
-        width: 80%;
-        background-color: #0d6efd;
+    .dropdown-wrapper-ingredient {
+        position: relative;
         border: none;
-    }
-
-    input[type="checkbox"] {
-        display: none;
-    }
-
-    .chevrons {
-        position: absolute;
-        right: 10px;
-        bottom: 6px;
-        width: 40px;
-        height: 40px;
-
-        .bi-chevron-up {
+        border-radius: 5px;
+        appearance: none;
+        height: 50px;
+        width: 240px;
+        background-color: #0d6efd;
+        color: #FFF;
+        font-size: inherit;
+        z-index: 1;
+        cursor: pointer;
+    
+        input[type="checkbox"] {
             display: none;
         }
-
-        .bi-chevron-up, 
-        .bi-chevron-down {
+    
+        .chevrons-ingredient {
             position: absolute;
             right: 10px;
             bottom: 6px;
+            width: 40px;
+            height: 40px;
+    
+            .chevron-up {
+                display: none;
+            }
+    
+            .chevron-up, 
+            .chevron-down {
+                position: absolute;
+                right: 10px;
+                bottom: 6px;
+            }
+        }
+        
+        .dropdown-ul-ingredient {
+            position: absolute;
+            left: 0;
+            top: 50px;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            color: #FFF;
+            opacity: 0;
+            transition: .3s;
+            list-style: none;
+    
+            li {
+                margin-top: 0;
+                padding: 0 10px 10px 10px;
+                background-color: #0d6efd;
+            }
+    
+            li:last-child {
+                border-radius: 0 0 5px 5px;
+            }
+    
+            a {
+                display: block;
+                padding-left: 5px;
+                text-decoration: none;
+                color: #FFF;
+            }        
+        }
+    
+        .search-ingredient {
+            position: absolute;
+            margin-left: 10px;
+            border: none;
+            height: 100%;
+            width: 80%;
+            display: none;
+            background-color: #0d6efd;
+        }
+    
+        .dropdown-label-ingredient {
+            position: relative;
+            border-radius: 5px;
+            padding: 10px;
+            display: block;
+            width: 80%;
+            cursor: pointer;
         }
     }
     
-    .dropdown-ul {
-        position: absolute;
-        left: 0;
-        top: 50px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        opacity: 0;
-        transition: .3s;
-        width: 100%;
-        color: #FFF;
-
-        li {
-            margin-top: 0;
-            padding: 0 10px 10px 10px;
-            background-color: #0d6efd;
-        }
-
-        li:last-child {
-            border-radius: 0 0 5px 5px;
-        }
-
-        a {
-            display: block;
-            padding-left: 5px;
-            text-decoration: none;
-            color: #FFF;
-        }        
-    }
-
-    .search-ingredient {
-        margin-left: 10px;
-        display: none;
-        position: absolute;
-        height: 100%;
-    }
-
-    .dropdown-label {
+    .dropdown-wrapper-appliance {
         position: relative;
+        border: none;
         border-radius: 5px;
-        padding: 10px;
-        display: block;
+        appearance: none;
+        height: 50px;
+        width: 240px;
+        background-color: #198754;
+        color: #FFF;
+        font-size: inherit;
+        z-index: 1;
         cursor: pointer;
-        width: 80%;
+
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        .chevrons-appliance {
+            position: absolute;
+            right: 10px;
+            bottom: 6px;
+            width: 40px;
+            height: 40px;
+    
+            .bi-chevron-up {
+                display: none;
+            }
+    
+            .chevron-up, 
+            .chevron-down {
+                position: absolute;
+                right: 10px;
+                bottom: 6px;
+            }
+        }
+        
+        .dropdown-ul-appliance {
+            position: absolute;
+            left: 0;
+            top: 50px;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            color: #FFF;
+            opacity: 0;
+            transition: .3s;
+            list-style: none;
+    
+            li {
+                margin-top: 0;
+                padding: 0 10px 10px 10px;
+                background-color: #198754;
+            }
+    
+            li:last-child {
+                border-radius: 0 0 5px 5px;
+            }
+    
+            a {
+                display: block;
+                padding-left: 5px;
+                text-decoration: none;
+                color: #FFF;
+            }        
+        }
+    
+        .search-appliance {
+            position: absolute;
+            margin-left: 10px;
+            border: none;
+            height: 100%;
+            width: 80%;
+            display: none;
+            background-color: #198754;
+        }
+
+        .dropdown-label-appliance {
+            position: relative;
+            border-radius: 5px;
+            padding: 10px;
+            display: block;
+            width: 80%;
+            cursor: pointer;
+        }
     }
 }
+
 
 
 
