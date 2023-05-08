@@ -33,7 +33,7 @@
 
       <!-- filters -->
       <section class="filter">
-
+        <!-- filter by ingredient --> 
         <div class="ingredient">
           <button type="button" class="btn btn-primary">
             badge 1
@@ -41,16 +41,15 @@
               <i class="bi bi-x-circle"></i>
             </span> 
           </button>
-           <!-- filter by ingredient --> 
-          <div class="dropdown-wrapper-ingredient">
+          <div class="dropdown-wrapper">
             <input type="checkbox" class="dropdown-chk" id="check1"/>
-            <label for="check1" class="dropdown-label-ingredient">Ingrédients</label>
-            <input type="search" class="search-ingredient" placeholder="Rechercher un ingredient">
-            <div class="chevrons-ingredient">
-              <i class="bi bi-chevron-up chevron-up-ingredient"></i>
-              <i class="bi bi-chevron-down chevron-down-ingredient"></i>
+            <label for="check1" class="dropdown-label">Ingrédients</label>
+            <input type="search" class="search" placeholder="Rechercher un ingredient">
+            <div class="chevrons">
+              <i class="bi bi-chevron-up"></i>
+              <i class="bi bi-chevron-down"></i>
             </div>
-            <ul class="dropdown-ul-ingredient">
+            <ul class="dropdown-ul">
               <li>test</li>
               <li>test</li>
               <li>test</li>
@@ -58,6 +57,7 @@
           </div>
         </div>
 
+        <!-- filter by appliance --> 
         <div class="appliance">
           <button type="button" class="btn btn-success">
             badge 2 
@@ -65,16 +65,15 @@
               <i class="bi bi-x-circle"></i>
             </span> 
           </button>
-          <!-- filter by appliance --> 
-          <div class="dropdown-wrapper-appliance">
+          <div class="dropdown-wrapper">
             <input type="checkbox" class="dropdown-chk" id="check2"/>
-            <label for="check2" class="dropdown-label-appliance">Appareils</label>
-            <input type="search" class="search-appliance" placeholder="Rechercher un appareil">
-            <div class="chevrons-appliance">
-              <i class="bi bi-chevron-up chevron-up-appliance"></i>
-              <i class="bi bi-chevron-down chevron-down-appliance"></i>
+            <label for="check2" class="dropdown-label">Appareils</label>
+            <input type="search" class="search" placeholder="Rechercher un appareil">
+            <div class="chevrons">
+              <i class="bi bi-chevron-up"></i>
+              <i class="bi bi-chevron-down"></i>
             </div>
-            <ul class="dropdown-ul-appliance">
+            <ul class="dropdown-ul">
               <li>test</li>
               <li>test</li>
               <li>test</li>
@@ -82,23 +81,23 @@
           </div>
         </div>
         
+        <!-- filter by ustensil -->
         <div class="utensil">
           <button type="button" class="btn btn-danger">
             badge 3
             <span class="badge">
               <i class="bi bi-x-circle"></i>
             </span> 
-          </button>
-          <!-- filter by ustensil --> 
-          <div class="dropdown-wrapper-utensil">
+          </button> 
+          <div class="dropdown-wrapper">
             <input type="checkbox" class="dropdown-chk" id="check3"/>
-            <label for="check3" class="dropdown-label-utensil">Ustensils</label>
-            <input type="search" class="search-utensil" placeholder="Rechercher un ustensil">
-            <div class="chevrons-utensil">
-              <i class="bi bi-chevron-up chevron-up-utensil"></i>
-              <i class="bi bi-chevron-down chevron-down-utensil"></i>
+            <label for="check3" class="dropdown-label">Ustensils</label>
+            <input type="search" class="search" placeholder="Rechercher un ustensil">
+            <div class="chevrons">
+              <i class="bi bi-chevron-up"></i>
+              <i class="bi bi-chevron-down"></i>
             </div>
-            <ul class="dropdown-ul-utensil">
+            <ul class="dropdown-ul">
               <li>test</li>
               <li>test</li>
               <li>test</li>
@@ -113,10 +112,10 @@
         </div>
       </section>
     </main>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="data/recipes.js"></script>
     <script src="js/factories/recipeCards.js"></script>
     <script src="js/recipes.js"></script>
+    <script src="js/components/filters.js"></script>
   </body>
 </html>

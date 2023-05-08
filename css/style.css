@@ -26,230 +26,92 @@ body {
   display: flex;
   gap: 15px;
 }
+.filter .ingredient .dropdown-wrapper,
+.filter .ingredient .search,
+.filter .ingredient .dropdown-ul {
+  background-color: #0d6efd;
+}
+.filter .appliance .dropdown-wrapper,
+.filter .appliance .search,
+.filter .appliance .dropdown-ul {
+  background-color: #198754;
+}
+.filter .utensil .dropdown-wrapper,
+.filter .utensil .search,
+.filter .utensil .dropdown-ul {
+  background-color: #dc3545;
+}
 .filter .ingredient > button,
 .filter .appliance > button,
 .filter .utensil > button {
   margin-bottom: 10px;
   display: none;
 }
-.filter .dropdown-wrapper-ingredient {
+.filter .dropdown-wrapper {
   position: relative;
   border: none;
   border-radius: 5px;
   appearance: none;
   height: 50px;
   width: 240px;
-  background-color: #0d6efd;
-  color: #FFF;
+  color: #fff;
   font-size: inherit;
   z-index: 1;
   cursor: pointer;
 }
-.filter .dropdown-wrapper-ingredient input[type=checkbox] {
+.filter .dropdown-wrapper input[type=checkbox] {
   display: none;
 }
-.filter .dropdown-wrapper-ingredient .chevrons-ingredient {
+.filter .dropdown-wrapper .chevrons {
   position: absolute;
   right: 10px;
   bottom: 6px;
   width: 40px;
   height: 40px;
 }
-.filter .dropdown-wrapper-ingredient .chevrons-ingredient .bi-chevron-up {
+.filter .dropdown-wrapper .chevrons .bi-chevron-up {
   display: none;
 }
-.filter .dropdown-wrapper-ingredient .chevrons-ingredient .bi-chevron-up,
-.filter .dropdown-wrapper-ingredient .chevrons-ingredient .bi-chevron-down {
+.filter .dropdown-wrapper .chevrons .bi-chevron-up,
+.filter .dropdown-wrapper .chevrons .bi-chevron-down {
   position: absolute;
   right: 10px;
   bottom: 6px;
 }
-.filter .dropdown-wrapper-ingredient .dropdown-ul-ingredient {
+.filter .dropdown-wrapper .dropdown-ul {
   position: absolute;
   left: 0;
   top: 50px;
   margin: 0;
   padding: 0;
   width: 100%;
-  color: #FFF;
+  color: #fff;
   opacity: 0;
   transition: 0.3s;
   list-style: none;
 }
-.filter .dropdown-wrapper-ingredient .dropdown-ul-ingredient li {
+.filter .dropdown-wrapper .dropdown-ul li {
   margin-top: 0;
   padding: 0 10px 10px 10px;
-  background-color: #0d6efd;
 }
-.filter .dropdown-wrapper-ingredient .dropdown-ul-ingredient li:last-child {
+.filter .dropdown-wrapper .dropdown-ul li:last-child {
   border-radius: 0 0 5px 5px;
 }
-.filter .dropdown-wrapper-ingredient .dropdown-ul-ingredient a {
+.filter .dropdown-wrapper .dropdown-ul a {
   display: block;
   padding-left: 5px;
   text-decoration: none;
-  color: #FFF;
+  color: #fff;
 }
-.filter .dropdown-wrapper-ingredient .search-ingredient {
+.filter .dropdown-wrapper .search {
   position: absolute;
   margin-left: 10px;
   border: none;
   height: 100%;
   width: 80%;
   display: none;
-  background-color: #0d6efd;
 }
-.filter .dropdown-wrapper-ingredient .dropdown-label-ingredient {
-  position: relative;
-  border-radius: 5px;
-  padding: 10px;
-  display: block;
-  width: 80%;
-  cursor: pointer;
-}
-.filter .dropdown-wrapper-appliance {
-  position: relative;
-  border: none;
-  border-radius: 5px;
-  appearance: none;
-  height: 50px;
-  width: 240px;
-  background-color: #198754;
-  color: #FFF;
-  font-size: inherit;
-  z-index: 1;
-  cursor: pointer;
-}
-.filter .dropdown-wrapper-appliance input[type=checkbox] {
-  display: none;
-}
-.filter .dropdown-wrapper-appliance .chevrons-appliance {
-  position: absolute;
-  right: 10px;
-  bottom: 6px;
-  width: 40px;
-  height: 40px;
-}
-.filter .dropdown-wrapper-appliance .chevrons-appliance .bi-chevron-up {
-  display: none;
-}
-.filter .dropdown-wrapper-appliance .chevrons-appliance .bi-chevron-up,
-.filter .dropdown-wrapper-appliance .chevrons-appliance .bi-chevron-down {
-  position: absolute;
-  right: 10px;
-  bottom: 6px;
-}
-.filter .dropdown-wrapper-appliance .dropdown-ul-appliance {
-  position: absolute;
-  left: 0;
-  top: 50px;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  color: #FFF;
-  opacity: 0;
-  transition: 0.3s;
-  list-style: none;
-}
-.filter .dropdown-wrapper-appliance .dropdown-ul-appliance li {
-  margin-top: 0;
-  padding: 0 10px 10px 10px;
-  background-color: #198754;
-}
-.filter .dropdown-wrapper-appliance .dropdown-ul-appliance li:last-child {
-  border-radius: 0 0 5px 5px;
-}
-.filter .dropdown-wrapper-appliance .dropdown-ul-appliance a {
-  display: block;
-  padding-left: 5px;
-  text-decoration: none;
-  color: #FFF;
-}
-.filter .dropdown-wrapper-appliance .search-appliance {
-  position: absolute;
-  margin-left: 10px;
-  border: none;
-  height: 100%;
-  width: 80%;
-  display: none;
-  background-color: #198754;
-}
-.filter .dropdown-wrapper-appliance .dropdown-label-appliance {
-  position: relative;
-  border-radius: 5px;
-  padding: 10px;
-  display: block;
-  width: 80%;
-  cursor: pointer;
-}
-.filter .dropdown-wrapper-utensil {
-  position: relative;
-  border: none;
-  border-radius: 5px;
-  appearance: none;
-  height: 50px;
-  width: 240px;
-  background-color: #dc3545;
-  color: #FFF;
-  font-size: inherit;
-  z-index: 1;
-  cursor: pointer;
-}
-.filter .dropdown-wrapper-utensil input[type=checkbox] {
-  display: none;
-}
-.filter .dropdown-wrapper-utensil .chevrons-utensil {
-  position: absolute;
-  right: 10px;
-  bottom: 6px;
-  width: 40px;
-  height: 40px;
-}
-.filter .dropdown-wrapper-utensil .chevrons-utensil .bi-chevron-up {
-  display: none;
-}
-.filter .dropdown-wrapper-utensil .chevrons-utensil .bi-chevron-up,
-.filter .dropdown-wrapper-utensil .chevrons-utensil .bi-chevron-down {
-  position: absolute;
-  right: 10px;
-  bottom: 6px;
-}
-.filter .dropdown-wrapper-utensil .dropdown-ul-utensil {
-  position: absolute;
-  left: 0;
-  top: 50px;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  color: #FFF;
-  opacity: 0;
-  transition: 0.3s;
-  list-style: none;
-}
-.filter .dropdown-wrapper-utensil .dropdown-ul-utensil li {
-  margin-top: 0;
-  padding: 0 10px 10px 10px;
-  background-color: #dc3545;
-}
-.filter .dropdown-wrapper-utensil .dropdown-ul-utensil li:last-child {
-  border-radius: 0 0 5px 5px;
-}
-.filter .dropdown-wrapper-utensil .dropdown-ul-utensil a {
-  display: block;
-  padding-left: 5px;
-  text-decoration: none;
-  color: #FFF;
-}
-.filter .dropdown-wrapper-utensil .search-utensil {
-  position: absolute;
-  margin-left: 10px;
-  border: none;
-  height: 100%;
-  width: 80%;
-  display: none;
-  background-color: #dc3545;
-}
-.filter .dropdown-wrapper-utensil .dropdown-label-utensil {
+.filter .dropdown-wrapper .dropdown-label {
   position: relative;
   border-radius: 5px;
   padding: 10px;
