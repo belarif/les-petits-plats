@@ -65,6 +65,17 @@ function getUtensils() {
     return Array.from(finalUtensils);
 }
 
+function setUtensilsInDropdown() {
+    const utensils = getUtensils();
+    utensils.forEach(utensil => {
+        const utensilUlElt = document.querySelector(".utensil .dropdown-ul");
+        const utensilLiElt = document.createElement("li");
+        utensilLiElt.textContent = utensil;
+        utensilUlElt.appendChild(utensilLiElt);
+    })
+}
+
 setIngredientsInDropdown();
 setAppliancesInDropdown();
+setUtensilsInDropdown();
 displayRecipesData();
