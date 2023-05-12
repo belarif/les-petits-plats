@@ -1,14 +1,9 @@
 "use_strict";
 
-function displayRecipesData() {
-    const recipeCardElt = document.querySelector(".recipe-cards");
-    recipes.forEach((recipe) => {
-        const recipeModel = recipeCardsFactory(recipe);
-        const recipeDOM = recipeModel.getRecipeDOM();
-        recipeCardElt.appendChild(recipeDOM);
-    });
-}
-
+/**
+ * 
+ * @returns {object}
+ */
 function getIngredients() {
     let ingredients = [];
     recipes.forEach((recipe) => {
@@ -18,8 +13,45 @@ function getIngredients() {
           ]; 
     });
 
-    const finalIngredients = new Set (ingredients);
-    return Array.from(finalIngredients);
+    return Array.from(new Set (ingredients));
+}
+
+/**
+ * 
+ * @returns {object}
+ */
+function getAppliances() {
+    let appliances = [];
+    recipes.forEach((recipe) => {
+        appliances = appliances.concat(recipe.appliance);
+    })
+
+    return Array.from(new Set (appliances));
+}
+
+/**
+ * 
+ * @returns {object}
+ */
+function getUtensils() {
+    let utensils = [];
+    recipes.forEach((recipe) => {
+        utensils = [
+            ...utensils,
+            ...recipe.ustensils,
+          ]; 
+    });
+
+    return Array.from(new Set (utensils));
+}
+
+function displayRecipesData() {
+    const recipeCardElt = document.querySelector(".recipe-cards");
+    recipes.forEach((recipe) => {
+        const recipeModel = recipeCardsFactory(recipe);
+        const recipeDOM = recipeModel.getRecipeDOM();
+        recipeCardElt.appendChild(recipeDOM);
+    });
 }
 
 function setIngredientsInDropdown() {
@@ -32,16 +64,6 @@ function setIngredientsInDropdown() {
     })
 }
 
-function getAppliances() {
-    let appliances = [];
-    recipes.forEach((recipe) => {
-        appliances = appliances.concat(recipe.appliance);
-    })
-
-    const finalAppliances = new Set (appliances);
-    return Array.from(finalAppliances);
-}
-
 function setAppliancesInDropdown() {
     const appliances = getAppliances();
     appliances.forEach(appliance => {
@@ -50,19 +72,6 @@ function setAppliancesInDropdown() {
         applianceLiElt.textContent = appliance;
         applianceUlElt.appendChild(applianceLiElt);
     })
-}
-
-function getUtensils() {
-    let utensils = [];
-    recipes.forEach((recipe) => {
-        utensils = [
-            ...utensils,
-            ...recipe.ustensils,
-          ]; 
-    });
-
-    const finalUtensils = new Set (utensils);
-    return Array.from(finalUtensils);
 }
 
 function setUtensilsInDropdown() {
@@ -75,7 +84,7 @@ function setUtensilsInDropdown() {
     })
 }
 
+displayRecipesData();
 setIngredientsInDropdown();
 setAppliancesInDropdown();
 setUtensilsInDropdown();
-displayRecipesData();
