@@ -32,5 +32,39 @@ function setIngredientsInDropdown() {
     })
 }
 
+function getAppliances() {
+    let appliances = [];
+    recipes.forEach((recipe) => {
+        appliances = appliances.concat(recipe.appliance);
+    })
+
+    const finalAppliances = new Set (appliances);
+    return Array.from(finalAppliances);
+}
+
+function setAppliancesInDropdown() {
+    const appliances = getAppliances();
+    appliances.forEach(appliance => {
+        const applianceUlElt = document.querySelector(".appliance .dropdown-ul");
+        const applianceLiElt = document.createElement("li");
+        applianceLiElt.textContent = appliance;
+        applianceUlElt.appendChild(applianceLiElt);
+    })
+}
+
+function getUtensils() {
+    let utensils = [];
+    recipes.forEach((recipe) => {
+        utensils = [
+            ...utensils,
+            ...recipe.ustensils,
+          ]; 
+    });
+
+    const finalUtensils = new Set (utensils);
+    return Array.from(finalUtensils);
+}
+
 setIngredientsInDropdown();
+setAppliancesInDropdown();
 displayRecipesData();
