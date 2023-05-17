@@ -1,5 +1,9 @@
 "use_strict";
 
+const ingredientUlElt = document.querySelector(".ingredient .dropdown-ul");
+const applianceUlElt = document.querySelector(".appliance .dropdown-ul");
+const utensilUlElt = document.querySelector(".utensil .dropdown-ul");
+
 /**
  * 
  * @returns {object}
@@ -90,12 +94,9 @@ function setIngredientsInDropdown() {
     })
 }
 
-const ingredientUlElt = document.querySelector(".ingredient .dropdown-ul");
-
 function setAppliancesInDropdown() {
     const appliances = getAppliances();
     appliances.forEach(appliance => {
-        const applianceUlElt = document.querySelector(".appliance .dropdown-ul");
         const applianceLiElt = document.createElement("li");
         applianceLiElt.textContent = appliance;
         applianceUlElt.appendChild(applianceLiElt);
@@ -105,13 +106,76 @@ function setAppliancesInDropdown() {
 function setUtensilsInDropdown() {
     const utensils = getUtensils();
     utensils.forEach(utensil => {
-        const utensilUlElt = document.querySelector(".utensil .dropdown-ul");
         const utensilLiElt = document.createElement("li");
         utensilLiElt.textContent = utensil;
         utensilUlElt.appendChild(utensilLiElt);
     })
 }
 
+function searchInIngredients(searchValue) {
+    const ingredients = getIngredients();
+    let searchedIngredients = [];
+
+    ingredients.forEach(ingredient => {
+        let regex = new RegExp(searchValue, "ig");
+        let search = ingredient.match(regex);
+        
+        if (search) {
+            searchedIngredients.unshift(ingredient);
+        }
+    });
+
+    return searchedIngredients;
+}
+
+function seachInNames(searchValue) {
+    const names = getNames();
+    let searchedNames = [];
+    names.forEach(name => {
+        let regex = new RegExp(searchValue, "ig");
+        let search = name.match(regex);
+        
+        if (search) {
+            searchedNames.unshift(name);
+        }
+    });
+
+    return searchedNames;
+}
+
+function searchInDescriptions(searchValue) {
+    const descriptions = getDescriptions();
+    let searchedDescriptions = [];
+    descriptions.forEach(description => {
+        let regex = new RegExp(searchValue, "ig");
+        let search = description.match(regex);
+        
+        if (search) {
+            searchedDescriptions.unshift(description);
+        }
+    });
+
+    return searchedDescriptions;
+}
+
+function searchRecipeInMainBar() {
+    const mainSearch = document.querySelector(".main-search");
+    mainSearch.addEventListener("keyup", (e) => {
+        let searchValue = e.target.value;
+        
+        if (searchValue.length >= 3) {
+            searchInIngredients(searchValue);
+            seachInNames(searchValue);
+            searchInDescriptions(searchValue);
+
+            ingredientUlElt.innerHTML = "";
+            applianceUlElt.innerHTML = "";
+            utensilUlElt.innerHTML = "";
+        }
+    });
+}
+
+searchRecipeInMainBar();
 displayRecipesData();
 setIngredientsInDropdown();
 setAppliancesInDropdown();
