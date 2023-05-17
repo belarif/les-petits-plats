@@ -45,6 +45,32 @@ function getUtensils() {
     return Array.from(new Set (utensils));
 }
 
+/**
+ * 
+ * @returns {object}
+ */
+function getNames() {
+    let names = [];
+    recipes.forEach((recipe) => {
+        names = names.concat(recipe.name);
+    })
+
+    return Array.from(new Set (names));
+}
+
+/**
+ * 
+ * @returns {object}
+ */
+function getDescriptions() {
+    let descriptions = [];
+    recipes.forEach((recipe) => {
+        descriptions = descriptions.concat(recipe.description);
+    })
+
+    return Array.from(new Set (descriptions));
+}
+
 function displayRecipesData() {
     const recipeCardElt = document.querySelector(".recipe-cards");
     recipes.forEach((recipe) => {
@@ -57,12 +83,14 @@ function displayRecipesData() {
 function setIngredientsInDropdown() {
     const ingredients = getIngredients();
     ingredients.forEach(ingredient => {
-        const ingredientUlElt = document.querySelector(".ingredient .dropdown-ul");
+        
         const ingredientLiElt = document.createElement("li");
         ingredientLiElt.textContent = ingredient;
         ingredientUlElt.appendChild(ingredientLiElt);
     })
 }
+
+const ingredientUlElt = document.querySelector(".ingredient .dropdown-ul");
 
 function setAppliancesInDropdown() {
     const appliances = getAppliances();
