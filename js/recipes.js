@@ -1,5 +1,6 @@
 "use_strict";
 
+// DOM elements
 const ingredientUlElt = document.querySelector(".ingredient .dropdown-ul");
 const applianceUlElt = document.querySelector(".appliance .dropdown-ul");
 const utensilUlElt = document.querySelector(".utensil .dropdown-ul");
@@ -112,6 +113,11 @@ function setUtensilsInDropdown() {
     })
 }
 
+/**
+ * 
+ * @param {string} searchValue 
+ * @returns {object}
+ */
 function searchInIngredients(searchValue) {
     const ingredients = getIngredients();
     let searchedIngredients = [];
@@ -128,6 +134,11 @@ function searchInIngredients(searchValue) {
     return searchedIngredients;
 }
 
+/**
+ * 
+ * @param {string} searchValue 
+ * @returns {object}
+ */
 function seachInNames(searchValue) {
     const names = getNames();
     let searchedNames = [];
@@ -143,6 +154,11 @@ function seachInNames(searchValue) {
     return searchedNames;
 }
 
+/**
+ * 
+ * @param {string} searchValue 
+ * @returns {object}
+ */
 function searchInDescriptions(searchValue) {
     const descriptions = getDescriptions();
     let searchedDescriptions = [];
@@ -158,15 +174,27 @@ function searchInDescriptions(searchValue) {
     return searchedDescriptions;
 }
 
+function getRecipesByName(searchValue) {
+    const searchedNames = seachInNames(searchValue);
+    let recipesByName = [];
+
+    searchedNames.forEach(name => {
+        const recipeByName = recipes.filter((recipe) => { 
+            return recipe.name === name;
+        });
+        recipesByName = recipesByName.concat(recipeByName);
+    });
+
+    return recipesByName;
+}
+
 function searchRecipeInMainBar() {
     const mainSearch = document.querySelector(".main-search");
     mainSearch.addEventListener("keyup", (e) => {
         let searchValue = e.target.value;
         
         if (searchValue.length >= 3) {
-            searchInIngredients(searchValue);
-            seachInNames(searchValue);
-            searchInDescriptions(searchValue);
+            getRecipesByName(searchValue);
 
             ingredientUlElt.innerHTML = "";
             applianceUlElt.innerHTML = "";
