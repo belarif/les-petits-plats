@@ -174,6 +174,11 @@ function searchInDescriptions(searchValue) {
     return searchedDescriptions;
 }
 
+/**
+ * 
+ * @param {string} searchValue 
+ * @returns {object}
+ */
 function getRecipesByName(searchValue) {
     const searchedNames = seachInNames(searchValue);
     let recipesByName = [];
@@ -188,6 +193,25 @@ function getRecipesByName(searchValue) {
     return recipesByName;
 }
 
+/**
+ * 
+ * @param {string} searchValue 
+ * @returns {object}
+ */
+function getRecipesByDescription(searchValue) {
+    const searchedDescriptions = searchInDescriptions(searchValue);
+    let recipesByDescription = [];
+
+    searchedDescriptions.forEach(description => {
+        const recipeByDescription = recipes.filter((recipe) => { 
+            return recipe.description === description;
+        });
+        recipesByDescription = recipesByDescription.concat(recipeByDescription);
+    });
+
+    return recipesByDescription;
+}
+
 function searchRecipeInMainBar() {
     const mainSearch = document.querySelector(".main-search");
     mainSearch.addEventListener("keyup", (e) => {
@@ -195,6 +219,7 @@ function searchRecipeInMainBar() {
         
         if (searchValue.length >= 3) {
             getRecipesByName(searchValue);
+            getRecipesByDescription(searchValue);
 
             ingredientUlElt.innerHTML = "";
             applianceUlElt.innerHTML = "";
