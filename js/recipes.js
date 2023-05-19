@@ -4,6 +4,8 @@
 const ingredientUlElt = document.querySelector(".ingredient .dropdown-ul");
 const applianceUlElt = document.querySelector(".appliance .dropdown-ul");
 const utensilUlElt = document.querySelector(".utensil .dropdown-ul");
+const rowCardElt = document.querySelector(".row-card");
+const recipeCardElt = document.querySelector(".recipe-cards");
 
 /**
  * 
@@ -77,12 +79,9 @@ function getDescriptions() {
 }
 
 function displayRecipesData() {
-    const recipeCardElt = document.querySelector(".recipe-cards");
-    recipes.forEach((recipe) => {
-        const recipeModel = recipeCardsFactory(recipe);
-        const recipeDOM = recipeModel.getRecipeDOM();
-        recipeCardElt.appendChild(recipeDOM);
-    });
+    const allRecipes = recipes;
+
+    displayRecipes(allRecipes);
 }
 
 function setIngredientsInDropdown() {
@@ -115,15 +114,15 @@ function setUtensilsInDropdown() {
 
 /**
  * 
- * @param {string} searchValue 
+ * @param {string} keyword 
  * @returns {object}
  */
-function searchInIngredients(searchValue) {
+function searchInIngredients(keyword) {
     const ingredients = getIngredients();
     let searchedIngredients = [];
 
     ingredients.forEach(ingredient => {
-        let regex = new RegExp(searchValue, "ig");
+        let regex = new RegExp(keyword, "ig");
         let search = ingredient.match(regex);
         
         if (search) {
@@ -136,14 +135,14 @@ function searchInIngredients(searchValue) {
 
 /**
  * 
- * @param {string} searchValue 
+ * @param {string} keyword 
  * @returns {object}
  */
-function seachInNames(searchValue) {
+function seachInNames(keyword) {
     const names = getNames();
     let searchedNames = [];
     names.forEach(name => {
-        let regex = new RegExp(searchValue, "ig");
+        let regex = new RegExp(keyword, "ig");
         let search = name.match(regex);
         
         if (search) {
@@ -156,14 +155,14 @@ function seachInNames(searchValue) {
 
 /**
  * 
- * @param {string} searchValue 
+ * @param {string} keyword 
  * @returns {object}
  */
-function searchInDescriptions(searchValue) {
+function searchInDescriptions(keyword) {
     const descriptions = getDescriptions();
     let searchedDescriptions = [];
     descriptions.forEach(description => {
-        let regex = new RegExp(searchValue, "ig");
+        let regex = new RegExp(keyword, "ig");
         let search = description.match(regex);
         
         if (search) {
@@ -176,11 +175,11 @@ function searchInDescriptions(searchValue) {
 
 /**
  * 
- * @param {string} searchValue 
+ * @param {string} keyword 
  * @returns {object}
  */
-function getRecipesByName(searchValue) {
-    const searchedNames = seachInNames(searchValue);
+function getRecipesByName(keyword) {
+    const searchedNames = seachInNames(keyword);
     let recipesByName = [];
 
     searchedNames.forEach(name => {
@@ -195,11 +194,11 @@ function getRecipesByName(searchValue) {
 
 /**
  * 
- * @param {string} searchValue 
+ * @param {string} keyword 
  * @returns {object}
  */
-function getRecipesByDescription(searchValue) {
-    const searchedDescriptions = searchInDescriptions(searchValue);
+function getRecipesByDescription(keyword) {
+    const searchedDescriptions = searchInDescriptions(keyword);
     let recipesByDescription = [];
 
     searchedDescriptions.forEach(description => {
@@ -212,18 +211,56 @@ function getRecipesByDescription(searchValue) {
     return recipesByDescription;
 }
 
+function getRecipesByIngredient(keyword) {
+    const searchedIngredients = searchInIngredients(keyword);
+
+    const recipeByIngredient = recipes.filter((recipe) => { 
+        let result = false;
+        recipe.ingredients.forEach(ingredient => {
+            const r = searchedIngredients.includes(ingredient.ingredient);
+            if(r) {
+                result = true;
+            }
+        });
+        
+        return result;
+    });
+       
+    return recipeByIngredient;
+}
+
+function displayRecipes(recipes) {
+    recipes.forEach((recipe) => {
+        const recipeModel = recipeCardsFactory(recipe);
+        const recipeDOM = recipeModel.getRecipeDOM();
+        recipeCardElt.appendChild(recipeDOM);
+    });
+}
+
 function searchRecipeInMainBar() {
     const mainSearch = document.querySelector(".main-search");
     mainSearch.addEventListener("keyup", (e) => {
-        let searchValue = e.target.value;
+        let keyword = e.target.value;
         
-        if (searchValue.length >= 3) {
-            getRecipesByName(searchValue);
-            getRecipesByDescription(searchValue);
+        if (keyword.length >= 3) {
+            const searchedNames = getRecipesByName(keyword);
+            const searchedDescriptions = getRecipesByDescription(keyword);
+            const searchedIngredients = getRecipesByIngredient(keyword);
+
+            let searchedRecipes = [];
+            searchedRecipes = searchedRecipes.concat(searchedNames).concat(searchedDescriptions).concat(searchedIngredients);
+            searchedRecipes = Array.from (new Set (searchedRecipes)); 
+
+            rowCardElt.innerHTML = "";
+            displayRecipes(searchedRecipes);
 
             ingredientUlElt.innerHTML = "";
             applianceUlElt.innerHTML = "";
             utensilUlElt.innerHTML = "";
+        } else {
+
+            rowCardElt.innerHTML = "";
+            displayRecipesData();
         }
     });
 }
