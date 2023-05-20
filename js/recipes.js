@@ -121,7 +121,7 @@ function searchInIngredients(keyword) {
     let searchedIngredients = [];
 
     ingredients.forEach(ingredient => {
-        let regex = new RegExp(" " + keyword + " ", "ig");
+        let regex = new RegExp(keyword, "ig");
         let search = ingredient.match(regex);
         
         if (search) {
