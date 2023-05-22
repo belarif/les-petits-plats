@@ -102,7 +102,7 @@ function displayIngredients(ingredients) {
 
 function setAppliancesInDropdown() {
     const appliances = getAppliances();
-    
+    displayAppliances(appliances);
 }
 
 /**
@@ -119,6 +119,14 @@ function displayAppliances(appliances) {
 
 function setUtensilsInDropdown() {
     const utensils = getUtensils();
+    displayUtensils(utensils);
+}
+
+/**
+ * 
+ * @param {object} utensils
+ */
+function displayUtensils(utensils) {
     utensils.forEach(utensil => {
         const utensilLiElt = document.createElement("li");
         utensilLiElt.textContent = utensil;
@@ -279,6 +287,7 @@ function displayRecipes(recipes) {
  */
 function getUpdatedIngredients(searchedRecipes) {
     let updatedIngredients = [];
+
     searchedRecipes.forEach(recipe => {
         recipe.ingredients.forEach(ingredient => {
             updatedIngredients = updatedIngredients.concat(ingredient.ingredient);
@@ -295,11 +304,46 @@ function getUpdatedIngredients(searchedRecipes) {
  */
 function getUpdatedAppliances(searchedRecipes) {
     let updatedAppliances = [];
+
     searchedRecipes.forEach(recipe => {
         updatedAppliances = updatedAppliances.concat(recipe.appliance);
     });
 
     return Array.from (new Set (updatedAppliances));
+}
+
+/**
+ * 
+ * @param {object} searchedRecipes 
+ * @returns {object}
+ */
+function getUpdatedUtensils(searchedRecipes) {
+    let updatedUtensils = [];
+
+    searchedRecipes.forEach(recipe => {
+        recipe.ustensils.forEach(ustensil => {
+            updatedUtensils = updatedUtensils.concat(ustensil);
+        })
+    });
+
+    return Array.from (new Set (updatedUtensils));
+}
+
+function refreshDropDownsAndRecipesSection(searchedRecipes) {
+    rowCardElt.innerHTML = "";
+    displayRecipes(searchedRecipes);
+
+    ingredientUlElt.innerHTML = "";
+    const updatedIngredients = getUpdatedIngredients(searchedRecipes);
+    displayIngredients(updatedIngredients);
+
+    applianceUlElt.innerHTML = "";
+    const updatedApplicances = getUpdatedAppliances(searchedRecipes);
+    displayAppliances(updatedApplicances); 
+
+    utensilUlElt.innerHTML = "";
+    const updatedUtensils = getUpdatedUtensils(searchedRecipes);
+    displayUtensils(updatedUtensils);
 }
 
 function searchRecipeInMainBar() {
@@ -315,20 +359,7 @@ function searchRecipeInMainBar() {
             let searchedRecipes = [];
             searchedRecipes = searchedRecipes.concat(recipesByNames).concat(recipesByDescriptions).concat(recipesByIngredients);
             searchedRecipes = Array.from (new Set (searchedRecipes));
-
-            
-            rowCardElt.innerHTML = "";
-            displayRecipes(searchedRecipes);
-
-            ingredientUlElt.innerHTML = "";
-            const updatedIngredients = getUpdatedIngredients(searchedRecipes);
-            displayIngredients(updatedIngredients);
-
-            applianceUlElt.innerHTML = "";
-            const updatedApplicances = getUpdatedAppliances(searchedRecipes);
-            displayAppliances(updatedApplicances); 
-
-            utensilUlElt.innerHTML = "";
+            refreshDropDownsAndRecipesSection(searchedRecipes);
 
         } else {
 
