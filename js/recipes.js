@@ -85,8 +85,15 @@ function displayRecipesData() {
 
 function setIngredientsInDropdown() {
     const ingredients = getIngredients();
+    displayIngredients(ingredients);
+}
+
+/**
+ * 
+ * @param {object} ingredients 
+ */
+function displayIngredients(ingredients) {
     ingredients.forEach(ingredient => {
-        
         const ingredientLiElt = document.createElement("li");
         ingredientLiElt.textContent = ingredient;
         ingredientUlElt.appendChild(ingredientLiElt);
@@ -95,6 +102,14 @@ function setIngredientsInDropdown() {
 
 function setAppliancesInDropdown() {
     const appliances = getAppliances();
+    
+}
+
+/**
+ * 
+ * @param {object} appliances
+ */
+function displayAppliances(appliances) {
     appliances.forEach(appliance => {
         const applianceLiElt = document.createElement("li");
         applianceLiElt.textContent = appliance;
@@ -214,6 +229,7 @@ function getRecipesByDescription(keyword) {
 function getRecipesByIngredient(keyword) {
     const searchedIngredients = searchInIngredients(keyword);
     const recipeByIngredient = recipes.filter((recipe) => { 
+        
         let result = false;
         recipe.ingredients.forEach(ingredient => {
             const r = searchedIngredients.includes(ingredient.ingredient);
@@ -256,26 +272,64 @@ function displayRecipes(recipes) {
     });
 }
 
+/**
+ * 
+ * @param {object} searchedRecipes 
+ * @returns {object}
+ */
+function getUpdatedIngredients(searchedRecipes) {
+    let updatedIngredients = [];
+    searchedRecipes.forEach(recipe => {
+        recipe.ingredients.forEach(ingredient => {
+            updatedIngredients = updatedIngredients.concat(ingredient.ingredient);
+        })
+    });
+    
+    return Array.from (new Set (updatedIngredients));
+}
+
+/**
+ * 
+ * @param {object} searchedRecipes 
+ * @returns {object}
+ */
+function getUpdatedAppliances(searchedRecipes) {
+    let updatedAppliances = [];
+    searchedRecipes.forEach(recipe => {
+        updatedAppliances = updatedAppliances.concat(recipe.appliance);
+    });
+
+    return Array.from (new Set (updatedAppliances));
+}
+
 function searchRecipeInMainBar() {
     const mainSearch = document.querySelector(".main-search");
     mainSearch.addEventListener("keyup", (e) => {
         let keyword = e.target.value;
         
         if (keyword.length >= 3) {
-            const searchedNames = getRecipesByName(keyword);
-            const searchedDescriptions = getRecipesByDescription(keyword);
-            const searchedIngredients = getRecipesByIngredient(keyword);
+            const recipesByNames = getRecipesByName(keyword);
+            const recipesByDescriptions = getRecipesByDescription(keyword);
+            const recipesByIngredients = getRecipesByIngredient(keyword);
 
             let searchedRecipes = [];
-            searchedRecipes = searchedRecipes.concat(searchedNames).concat(searchedDescriptions).concat(searchedIngredients);
-            searchedRecipes = Array.from (new Set (searchedRecipes)); 
+            searchedRecipes = searchedRecipes.concat(recipesByNames).concat(recipesByDescriptions).concat(recipesByIngredients);
+            searchedRecipes = Array.from (new Set (searchedRecipes));
 
+            
             rowCardElt.innerHTML = "";
             displayRecipes(searchedRecipes);
 
             ingredientUlElt.innerHTML = "";
+            const updatedIngredients = getUpdatedIngredients(searchedRecipes);
+            displayIngredients(updatedIngredients);
+
             applianceUlElt.innerHTML = "";
+            const updatedApplicances = getUpdatedAppliances(searchedRecipes);
+            displayAppliances(updatedApplicances); 
+
             utensilUlElt.innerHTML = "";
+
         } else {
 
             rowCardElt.innerHTML = "";
