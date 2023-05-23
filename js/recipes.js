@@ -423,11 +423,35 @@ function filterByAppliances() {
     });
 }
 
+function filterByUtensils() {
+    const autensilsSearchElt = document.querySelector(".utensil .search");
+    autensilsSearchElt.addEventListener("keyup", (e) => {
+        let keyword = e.target.value;
+        const autensilsSearch = getUtensils();
+        let searchedUtensils = [];
+        
+        autensilsSearch.forEach(utensil => {
+            let regex = new RegExp(keyword, "ig");
+            let search = utensil.match(regex);
+
+            if (search) {
+                searchedUtensils.unshift(utensil);
+            }
+        });
+
+        if (keyword.length >= 3) {
+            utensilUlElt.innerHTML = "";
+            displayUtensils(searchedUtensils); 
+        } else {
+            utensilUlElt.innerHTML = "";
+            displayUtensils(searchedUtensils);
+        }
+    });
+}
 
 filterByIngredients();
 filterByAppliances();
-
-
+filterByUtensils();
 
 searchRecipeInMainBar();
 displayRecipesData();
