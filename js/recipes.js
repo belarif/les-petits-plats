@@ -390,15 +390,44 @@ function filterByIngredients() {
         if (keyword.length >= 3) {
             ingredientUlElt.innerHTML = "";
             displayIngredients(searchedIngredients); 
-        } 
-        else {
+        } else {
             ingredientUlElt.innerHTML = "";
             displayIngredients(searchedIngredients);
         }
     });
 }
 
+function filterByAppliances() {
+    const appliancesSearchElt = document.querySelector(".appliance .search");
+    appliancesSearchElt.addEventListener("keyup", (e) => {
+        let keyword = e.target.value;
+        const appliancesSearch = getAppliances();
+        let searchedAppliances = [];
+        
+        appliancesSearch.forEach(appliance => {
+            let regex = new RegExp(keyword, "ig");
+            let search = appliance.match(regex);
+
+            if (search) {
+                searchedAppliances.unshift(appliance);
+            }
+        });
+
+        if (keyword.length >= 3) {
+            applianceUlElt.innerHTML = "";
+            displayAppliances(searchedAppliances); 
+        } else {
+            applianceUlElt.innerHTML = "";
+            displayAppliances(searchedAppliances);
+        }
+    });
+}
+
+
 filterByIngredients();
+filterByAppliances();
+
+
 
 searchRecipeInMainBar();
 displayRecipesData();
