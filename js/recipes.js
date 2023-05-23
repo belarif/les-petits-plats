@@ -241,7 +241,7 @@ function getRecipesByIngredient(keyword) {
         let result = false;
         recipe.ingredients.forEach(ingredient => {
             const r = searchedIngredients.includes(ingredient.ingredient);
-            if(r) {
+            if (r) {
                 result = true;
             }
         });
@@ -355,14 +355,13 @@ function searchRecipeInMainBar() {
             const recipesByNames = getRecipesByName(keyword);
             const recipesByDescriptions = getRecipesByDescription(keyword);
             const recipesByIngredients = getRecipesByIngredient(keyword);
-
+            
             let searchedRecipes = [];
             searchedRecipes = searchedRecipes.concat(recipesByNames).concat(recipesByDescriptions).concat(recipesByIngredients);
             searchedRecipes = Array.from (new Set (searchedRecipes));
             refreshDropDownsAndRecipesSection(searchedRecipes);
 
         } else {
-
             rowCardElt.innerHTML = "";
             displayRecipesData();
             setIngredientsInDropdown();
@@ -371,6 +370,35 @@ function searchRecipeInMainBar() {
         }
     });
 }
+
+function filterByIngredients() {
+    const ingredientsSearchElt = document.querySelector(".ingredient .search");
+    ingredientsSearchElt.addEventListener("keyup", (e) => {
+        let keyword = e.target.value;
+        const ingredientsSearch = getIngredients();
+        let searchedIngredients = [];
+        
+        ingredientsSearch.forEach(ingredient => {
+            let regex = new RegExp(keyword, "ig");
+            let search = ingredient.match(regex);
+
+            if (search) {
+                searchedIngredients.unshift(ingredient);
+            }
+        });
+
+        if (keyword.length >= 3) {
+            ingredientUlElt.innerHTML = "";
+            displayIngredients(searchedIngredients); 
+        } 
+        else {
+            ingredientUlElt.innerHTML = "";
+            displayIngredients(searchedIngredients);
+        }
+    });
+}
+
+filterByIngredients();
 
 searchRecipeInMainBar();
 displayRecipesData();
