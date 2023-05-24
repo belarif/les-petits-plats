@@ -329,7 +329,7 @@ function getUpdatedUtensils(searchedRecipes) {
     return Array.from (new Set (updatedUtensils));
 }
 
-function refreshDropDownsAndRecipesSection(searchedRecipes) {
+function refreshDropdownsAndRecipesSection(searchedRecipes) {
     rowCardElt.innerHTML = "";
     displayRecipes(searchedRecipes);
 
@@ -359,7 +359,7 @@ function searchRecipeInMainBar() {
             let searchedRecipes = [];
             searchedRecipes = searchedRecipes.concat(recipesByNames).concat(recipesByDescriptions).concat(recipesByIngredients);
             searchedRecipes = Array.from (new Set (searchedRecipes));
-            refreshDropDownsAndRecipesSection(searchedRecipes);
+            refreshDropdownsAndRecipesSection(searchedRecipes);
 
         } else {
             rowCardElt.innerHTML = "";
@@ -373,19 +373,13 @@ function searchRecipeInMainBar() {
 
 function filterByIngredients() {
     const ingredientsSearchElt = document.querySelector(".ingredient .search");
+
     ingredientsSearchElt.addEventListener("keyup", (e) => {
+        let searchedIngredients = [];
         let keyword = e.target.value;
         const ingredientsSearch = getIngredients();
-        let searchedIngredients = [];
-        
-        ingredientsSearch.forEach(ingredient => {
-            let regex = new RegExp(keyword, "ig");
-            let search = ingredient.match(regex);
 
-            if (search) {
-                searchedIngredients.unshift(ingredient);
-            }
-        });
+        filterByDropdown(ingredientsSearch, searchedIngredients, keyword);
 
         if (keyword.length >= 3) {
             ingredientUlElt.innerHTML = "";
@@ -399,19 +393,13 @@ function filterByIngredients() {
 
 function filterByAppliances() {
     const appliancesSearchElt = document.querySelector(".appliance .search");
+
     appliancesSearchElt.addEventListener("keyup", (e) => {
+        let searchedAppliances = [];
         let keyword = e.target.value;
         const appliancesSearch = getAppliances();
-        let searchedAppliances = [];
-        
-        appliancesSearch.forEach(appliance => {
-            let regex = new RegExp(keyword, "ig");
-            let search = appliance.match(regex);
 
-            if (search) {
-                searchedAppliances.unshift(appliance);
-            }
-        });
+        filterByDropdown(appliancesSearch, searchedAppliances, keyword);
 
         if (keyword.length >= 3) {
             applianceUlElt.innerHTML = "";
@@ -425,19 +413,13 @@ function filterByAppliances() {
 
 function filterByUtensils() {
     const autensilsSearchElt = document.querySelector(".utensil .search");
-    autensilsSearchElt.addEventListener("keyup", (e) => {
-        let keyword = e.target.value;
-        const autensilsSearch = getUtensils();
-        let searchedUtensils = [];
-        
-        autensilsSearch.forEach(utensil => {
-            let regex = new RegExp(keyword, "ig");
-            let search = utensil.match(regex);
 
-            if (search) {
-                searchedUtensils.unshift(utensil);
-            }
-        });
+    autensilsSearchElt.addEventListener("keyup", (e) => {
+        let searchedUtensils = [];
+        let keyword = e.target.value;
+        const utensilsSearch = getUtensils();
+        
+        filterByDropdown(utensilsSearch, searchedUtensils, keyword);
 
         if (keyword.length >= 3) {
             utensilUlElt.innerHTML = "";
@@ -449,12 +431,23 @@ function filterByUtensils() {
     });
 }
 
-filterByIngredients();
-filterByAppliances();
-filterByUtensils();
+function filterByDropdown(itemsSearch, searchedItems, keyword) {
+    itemsSearch.forEach(item => {
+        let regex = new RegExp(keyword, "ig");
+        let search = item.match(regex);
+
+        if (search) {
+            searchedItems.unshift(item);
+        }
+    });
+}
 
 searchRecipeInMainBar();
 displayRecipesData();
 setIngredientsInDropdown();
 setAppliancesInDropdown();
 setUtensilsInDropdown();
+
+filterByIngredients();
+filterByAppliances();
+filterByUtensils();
