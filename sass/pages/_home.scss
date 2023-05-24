@@ -54,11 +54,25 @@ body {
         }
     }
 
-    .ingredient > button,
-    .appliance > button,
-    .utensil > button {
+    .ingredient-tag,
+    .appliance-tag,
+    .utensil-tag {
         margin-bottom: 10px;
+        border-radius: 5px;
         display: none;
+        width: fit-content;
+    }
+
+    .ingredient-tag {
+        background-color: $primary;
+    }
+
+    .appliance-tag {
+        background-color: $success;
+    }
+
+    .utensil-tag {
+        background-color: $danger;
     }
 
     .dropdown-wrapper {

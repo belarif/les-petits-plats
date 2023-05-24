@@ -41,11 +41,22 @@ body {
 .filter .utensil .dropdown-ul {
   background-color: #dc3545;
 }
-.filter .ingredient > button,
-.filter .appliance > button,
-.filter .utensil > button {
+.filter .ingredient-tag,
+.filter .appliance-tag,
+.filter .utensil-tag {
   margin-bottom: 10px;
+  border-radius: 5px;
   display: none;
+  width: fit-content;
+}
+.filter .ingredient-tag {
+  background-color: #0d6efd;
+}
+.filter .appliance-tag {
+  background-color: #198754;
+}
+.filter .utensil-tag {
+  background-color: #dc3545;
 }
 .filter .dropdown-wrapper {
   position: relative;

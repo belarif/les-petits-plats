@@ -1,5 +1,10 @@
 "use_strict";
 
+// DOM elements
+const ingredientTagElt = document.querySelector(".ingredient-tag");
+const applianceTagElt = document.querySelector(".appliance-tag");
+const utensilTagElt = document.querySelector(".utensil-tag");
+
 function filterByIngredients() {
     const ingredientsSearchElt = document.querySelector(".ingredient .search");
 
@@ -60,6 +65,12 @@ function filterByUtensils() {
     });
 }
 
+/**
+ * 
+ * @param {object} itemsSearch 
+ * @param {object} searchedItems
+ * @param {string} keyword
+ */
 function filterByDropdown(itemsSearch, searchedItems, keyword) {
     itemsSearch.forEach(item => {
         let regex = new RegExp(keyword, "ig");
@@ -71,6 +82,70 @@ function filterByDropdown(itemsSearch, searchedItems, keyword) {
     });
 }
 
+function displayIngredientTag() {
+    const ingredientsLiElt = document.querySelectorAll(".ingredient .dropdown-ul li");
+
+    ingredientsLiElt.forEach(ingredientLiElt => {
+        ingredientLiElt.addEventListener("click", () => {
+            const buttonTagElt = document.querySelector(".ingredient-tag button");
+            buttonTagElt.textContent = ingredientLiElt.textContent;
+            ingredientTagElt.style.display = "block";
+        });
+    });
+}
+
+function closeIngredientTag() {
+    const closeIngredientTagElt = document.querySelector(".ingredient .badge");
+    closeIngredientTagElt.addEventListener("click", () => {
+        ingredientTagElt.style.display = "none";
+    })
+}
+
+function displayApplianceTag() {
+    const appliancesLiElt = document.querySelectorAll(".appliance .dropdown-ul li");
+
+    appliancesLiElt.forEach(applianceLiElt => {
+        applianceLiElt.addEventListener("click", () => {
+            const buttonTagElt = document.querySelector(".appliance-tag button");
+            buttonTagElt.textContent = applianceLiElt.textContent;
+            applianceTagElt.style.display = "block";
+
+        });
+    });
+}
+
+function closeApplianceTag() {
+    const closeApplianceTagElt = document.querySelector(".appliance .badge");
+    closeApplianceTagElt.addEventListener("click", () => {
+        applianceTagElt.style.display = "none";
+    })
+}
+
+function displayUtensilTag() {
+    const utensilsLiElt = document.querySelectorAll(".utensil .dropdown-ul li");
+
+    utensilsLiElt.forEach(utensilLiElt => {
+        utensilLiElt.addEventListener("click", () => {
+            const buttonTagElt = document.querySelector(".utensil-tag button");
+            buttonTagElt.textContent = utensilLiElt.textContent;
+            utensilTagElt.style.display = "block";
+        });
+    });
+}
+
+function closeUtensilTag() {
+    const closeUtensilTagElt = document.querySelector(".utensil .badge");
+    closeUtensilTagElt.addEventListener("click", () => {
+        utensilTagElt.style.display = "none";
+    })
+}
+
+displayIngredientTag();
+closeIngredientTag();
+displayApplianceTag();
+closeApplianceTag();
+displayUtensilTag();
+closeUtensilTag();
 filterByIngredients();
 filterByAppliances();
 filterByUtensils();

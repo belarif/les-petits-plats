@@ -32,14 +32,16 @@
 
       <!-- filters -->
       <div class="filter">
+
         <!-- filter by ingredient --> 
         <div class="ingredient">
-          <button type="button" class="btn btn-primary">
-            badge 1
+          <div class="ingredient-tag">
+            <button type="button" class="btn btn-primary">
+            </button>
             <span class="badge">
               <i class="bi bi-x-circle"></i>
             </span> 
-          </button>
+          </div>
           <div class="dropdown-wrapper">
             <input type="checkbox" class="dropdown-chk" id="check1">
             <label for="check1" class="dropdown-label">Ingrédients</label>
@@ -55,12 +57,13 @@
 
         <!-- filter by appliance --> 
         <div class="appliance">
-          <button type="button" class="btn btn-success">
-            badge 2 
+          <div class="appliance-tag">
+            <button type="button" class="btn btn-success">
+            </button>
             <span class="badge">
               <i class="bi bi-x-circle"></i>
             </span> 
-          </button>
+          </div>
           <div class="dropdown-wrapper">
             <input type="checkbox" class="dropdown-chk" id="check2">
             <label for="check2" class="dropdown-label">Appareils</label>
@@ -76,12 +79,13 @@
         
         <!-- filter by ustensil -->
         <div class="utensil">
-          <button type="button" class="btn btn-danger">
-            badge 3
+          <div class="utensil-tag">
+            <button type="button" class="btn btn-danger">
+            </button>
             <span class="badge">
               <i class="bi bi-x-circle"></i>
             </span> 
-          </button> 
+          </div>
           <div class="dropdown-wrapper">
             <input type="checkbox" class="dropdown-chk" id="check3">
             <label for="check3" class="dropdown-label">Ustensils</label>
@@ -101,6 +105,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4 row-card">
         </div>
       </div>
+      
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="data/recipes.js"></script>
