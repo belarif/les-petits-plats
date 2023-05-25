@@ -5,6 +5,10 @@ const ingredientTagElt = document.querySelector(".ingredient-tag");
 const applianceTagElt = document.querySelector(".appliance-tag");
 const utensilTagElt = document.querySelector(".utensil-tag");
 
+/**
+ * 
+ * @param {object} updatedIngredients 
+ */
 function filterByIngredients(updatedIngredients) {
     const ingredientsSearchElt = document.querySelector(".ingredient .search");
 
@@ -13,6 +17,9 @@ function filterByIngredients(updatedIngredients) {
         let searchedIngredients = [];
 
         filterByDropdown(updatedIngredients, searchedIngredients, keywordIngredient);
+
+        // displayRecipes(allRecipes);
+       
 
         if (keywordIngredient.length >= 3) {
             ingredientUlElt.innerHTML = "";
@@ -24,6 +31,10 @@ function filterByIngredients(updatedIngredients) {
     });
 }
 
+/**
+ * 
+ * @param {object} updatedApplicances 
+ */
 function filterByAppliances(updatedApplicances) {
     const appliancesSearchElt = document.querySelector(".appliance .search");
 
@@ -43,6 +54,10 @@ function filterByAppliances(updatedApplicances) {
     });
 }
 
+/**
+ * 
+ * @param {object} updatedUtensils 
+ */
 function filterByUtensils(updatedUtensils) {
     const autensilsSearchElt = document.querySelector(".utensil .search");
 
@@ -84,13 +99,9 @@ function displayIngredientTag() {
 
     ingredientsLiElt.forEach(ingredientLiElt => {
         ingredientLiElt.addEventListener("click", () => {
-            
             const buttonTagElt = document.querySelector(".ingredient-tag button");
             buttonTagElt.textContent = ingredientLiElt.textContent;
             ingredientTagElt.style.display = "block";
-
-            // const toto = test();
-            // displayRecipes(toto);
         });
     });
 }
