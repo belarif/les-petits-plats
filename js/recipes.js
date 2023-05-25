@@ -293,7 +293,7 @@ function getUpdatedIngredients(searchedRecipes) {
             updatedIngredients = updatedIngredients.concat(ingredient.ingredient);
         })
     });
-    
+
     return Array.from (new Set (updatedIngredients));
 }
 
@@ -336,33 +336,42 @@ function refreshDropdownsAndRecipesSection(searchedRecipes) {
     ingredientUlElt.innerHTML = "";
     const updatedIngredients = getUpdatedIngredients(searchedRecipes);
     displayIngredients(updatedIngredients);
+    filterByIngredients(updatedIngredients);
 
     applianceUlElt.innerHTML = "";
     const updatedApplicances = getUpdatedAppliances(searchedRecipes);
     displayAppliances(updatedApplicances); 
+    filterByAppliances(updatedApplicances);
 
     utensilUlElt.innerHTML = "";
     const updatedUtensils = getUpdatedUtensils(searchedRecipes);
     displayUtensils(updatedUtensils);
+    filterByUtensils(updatedUtensils);
 }
 
 function searchRecipeInMainBar() {
     const mainSearch = document.querySelector(".main-search");
+
     mainSearch.addEventListener("keyup", (e) => {
         let keyword = e.target.value;
-        
+            
         if (keyword.length >= 3) {
             const recipesByNames = getRecipesByName(keyword);
             const recipesByDescriptions = getRecipesByDescription(keyword);
             const recipesByIngredients = getRecipesByIngredient(keyword);
-            
             let searchedRecipes = [];
+            
             searchedRecipes = searchedRecipes.concat(recipesByNames).concat(recipesByDescriptions).concat(recipesByIngredients);
             searchedRecipes = Array.from (new Set (searchedRecipes));
+
             refreshDropdownsAndRecipesSection(searchedRecipes);
 
         } else {
             rowCardElt.innerHTML = "";
+            ingredientUlElt.innerHTML = "";
+            applianceUlElt.innerHTML = "";
+            utensilUlElt.innerHTML = "";
+            
             displayRecipesData();
             setIngredientsInDropdown();
             setAppliancesInDropdown();

@@ -5,62 +5,59 @@ const ingredientTagElt = document.querySelector(".ingredient-tag");
 const applianceTagElt = document.querySelector(".appliance-tag");
 const utensilTagElt = document.querySelector(".utensil-tag");
 
-function filterByIngredients() {
+function filterByIngredients(updatedIngredients) {
     const ingredientsSearchElt = document.querySelector(".ingredient .search");
 
     ingredientsSearchElt.addEventListener("keyup", (e) => {
+        let keywordIngredient = e.target.value;
         let searchedIngredients = [];
-        let keyword = e.target.value;
-        const ingredientsSearch = getIngredients();
 
-        filterByDropdown(ingredientsSearch, searchedIngredients, keyword);
+        filterByDropdown(updatedIngredients, searchedIngredients, keywordIngredient);
 
-        if (keyword.length >= 3) {
+        if (keywordIngredient.length >= 3) {
             ingredientUlElt.innerHTML = "";
             displayIngredients(searchedIngredients); 
         } else {
             ingredientUlElt.innerHTML = "";
-            displayIngredients(searchedIngredients);
+            displayIngredients(updatedIngredients);
         }
     });
 }
 
-function filterByAppliances() {
+function filterByAppliances(updatedApplicances) {
     const appliancesSearchElt = document.querySelector(".appliance .search");
 
     appliancesSearchElt.addEventListener("keyup", (e) => {
         let searchedAppliances = [];
-        let keyword = e.target.value;
-        const appliancesSearch = getAppliances();
+        let keywordAppliance = e.target.value;
 
-        filterByDropdown(appliancesSearch, searchedAppliances, keyword);
+        filterByDropdown(updatedApplicances, searchedAppliances, keywordAppliance);
 
-        if (keyword.length >= 3) {
+        if (keywordAppliance.length >= 3) {
             applianceUlElt.innerHTML = "";
             displayAppliances(searchedAppliances); 
         } else {
             applianceUlElt.innerHTML = "";
-            displayAppliances(searchedAppliances);
+            displayAppliances(updatedApplicances);
         }
     });
 }
 
-function filterByUtensils() {
+function filterByUtensils(updatedUtensils) {
     const autensilsSearchElt = document.querySelector(".utensil .search");
 
     autensilsSearchElt.addEventListener("keyup", (e) => {
         let searchedUtensils = [];
         let keyword = e.target.value;
-        const utensilsSearch = getUtensils();
         
-        filterByDropdown(utensilsSearch, searchedUtensils, keyword);
+        filterByDropdown(updatedUtensils, searchedUtensils, keyword);
 
         if (keyword.length >= 3) {
             utensilUlElt.innerHTML = "";
             displayUtensils(searchedUtensils); 
         } else {
             utensilUlElt.innerHTML = "";
-            displayUtensils(searchedUtensils);
+            displayUtensils(updatedUtensils);
         }
     });
 }
@@ -87,9 +84,13 @@ function displayIngredientTag() {
 
     ingredientsLiElt.forEach(ingredientLiElt => {
         ingredientLiElt.addEventListener("click", () => {
+            
             const buttonTagElt = document.querySelector(".ingredient-tag button");
             buttonTagElt.textContent = ingredientLiElt.textContent;
             ingredientTagElt.style.display = "block";
+
+            // const toto = test();
+            // displayRecipes(toto);
         });
     });
 }
@@ -146,6 +147,3 @@ displayApplianceTag();
 closeApplianceTag();
 displayUtensilTag();
 closeUtensilTag();
-filterByIngredients();
-filterByAppliances();
-filterByUtensils();
