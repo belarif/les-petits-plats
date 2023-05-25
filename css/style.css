@@ -22,9 +22,10 @@ body {
   border-right: none;
 }
 
-.filter {
+.filter .filters,
+.filter .tags {
   display: flex;
-  gap: 15px;
+  gap: 60px;
 }
 .filter .ingredient .dropdown-wrapper,
 .filter .ingredient .search,

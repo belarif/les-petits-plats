@@ -104,7 +104,7 @@ function displayIngredientTag() {
 }
 
 function closeIngredientTag() {
-    const closeIngredientTagElt = document.querySelector(".ingredient .badge");
+    const closeIngredientTagElt = document.querySelector(".ingredient-tag .badge");
     closeIngredientTagElt.addEventListener("click", () => {
         ingredientTagElt.style.display = "none";
         displayRecipesData();
@@ -126,7 +126,7 @@ function displayApplianceTag() {
 }
 
 function closeApplianceTag() {
-    const closeApplianceTagElt = document.querySelector(".appliance .badge");
+    const closeApplianceTagElt = document.querySelector(".appliance-tag .badge");
     closeApplianceTagElt.addEventListener("click", () => {
         applianceTagElt.style.display = "none";
     })
@@ -145,7 +145,7 @@ function displayUtensilTag() {
 }
 
 function closeUtensilTag() {
-    const closeUtensilTagElt = document.querySelector(".utensil .badge");
+    const closeUtensilTagElt = document.querySelector(".utensil-tag .badge");
     closeUtensilTagElt.addEventListener("click", () => {
         utensilTagElt.style.display = "none";
     })

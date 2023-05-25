@@ -27,8 +27,11 @@ body {
 }
 
 .filter {
-    display: flex;
-    gap: 15px;
+    .filters,
+    .tags {
+        display: flex;
+        gap: 60px;
+    }
 
     .ingredient {
         .dropdown-wrapper,
