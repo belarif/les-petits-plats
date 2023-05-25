@@ -18,9 +18,6 @@ function filterByIngredients(updatedIngredients) {
 
         filterByDropdown(updatedIngredients, searchedIngredients, keywordIngredient);
 
-        // displayRecipes(allRecipes);
-       
-
         if (keywordIngredient.length >= 3) {
             ingredientUlElt.innerHTML = "";
             displayIngredients(searchedIngredients); 
@@ -98,7 +95,7 @@ function displayIngredientTag() {
     const ingredientsLiElt = document.querySelectorAll(".ingredient .dropdown-ul li");
 
     ingredientsLiElt.forEach(ingredientLiElt => {
-        ingredientLiElt.addEventListener("click", () => {
+        ingredientLiElt.addEventListener("click", (e) => {
             const buttonTagElt = document.querySelector(".ingredient-tag button");
             buttonTagElt.textContent = ingredientLiElt.textContent;
             ingredientTagElt.style.display = "block";
@@ -110,6 +107,8 @@ function closeIngredientTag() {
     const closeIngredientTagElt = document.querySelector(".ingredient .badge");
     closeIngredientTagElt.addEventListener("click", () => {
         ingredientTagElt.style.display = "none";
+        displayRecipesData();
+        setIngredientsInDropdown();
     })
 }
 

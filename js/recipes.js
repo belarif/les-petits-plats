@@ -363,15 +363,11 @@ function searchRecipeInMainBar() {
             const recipesByNames = getRecipesByName(keyword);
             const recipesByDescriptions = getRecipesByDescription(keyword);
             const recipesByIngredients = getRecipesByIngredient(keyword);
+
             let searchedRecipes = [];
-            
             searchedRecipes = searchedRecipes.concat(recipesByNames).concat(recipesByDescriptions).concat(recipesByIngredients);
             searchedRecipes = Array.from (new Set (searchedRecipes));
-
             refreshDropdownsAndRecipesSection(searchedRecipes);
-            displayIngredientTag();
-            displayApplianceTag();
-            displayUtensilTag();
 
         } else {
             rowCardElt.innerHTML = "";
@@ -383,10 +379,11 @@ function searchRecipeInMainBar() {
             setIngredientsInDropdown();
             setAppliancesInDropdown();
             setUtensilsInDropdown();
-            displayIngredientTag();
-            displayApplianceTag();
-            displayUtensilTag();
         }
+
+        displayIngredientTag();
+        displayApplianceTag();
+        displayUtensilTag();
     });
 }
 
