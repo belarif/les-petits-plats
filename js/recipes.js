@@ -11,51 +11,6 @@ const recipeCardElt = document.querySelector(".recipe-cards");
  * 
  * @returns {object}
  */
-function getIngredients() {
-    let ingredients = [];
-    recipes.forEach((recipe) => {
-        ingredients = [
-            ...ingredients,
-            ...recipe.ingredients.map((ingredient) => ingredient.ingredient),
-          ]; 
-    });
-
-    return Array.from(new Set (ingredients));
-}
-
-/**
- * 
- * @returns {object}
- */
-function getAppliances() {
-    let appliances = [];
-    recipes.forEach((recipe) => {
-        appliances = appliances.concat(recipe.appliance);
-    })
-
-    return Array.from(new Set (appliances));
-}
-
-/**
- * 
- * @returns {object}
- */
-function getUtensils() {
-    let utensils = [];
-    recipes.forEach((recipe) => {
-        utensils = [
-            ...utensils,
-            ...recipe.ustensils,
-          ]; 
-    });
-
-    return Array.from(new Set (utensils));
-}
-
-/**
- * 
- * @returns {object}
- */
 function getNames() {
     let names = [];
     recipes.forEach((recipe) => {
@@ -81,57 +36,6 @@ function getDescriptions() {
 function displayRecipesData() {
     const allRecipes = recipes;
     displayRecipes(allRecipes);
-}
-
-function setIngredientsInDropdown() {
-    const ingredients = getIngredients();
-    displayIngredients(ingredients);
-}
-
-/**
- * 
- * @param {object} ingredients 
- */
-function displayIngredients(ingredients) {
-    ingredients.forEach(ingredient => {
-        const ingredientLiElt = document.createElement("li");
-        ingredientLiElt.textContent = ingredient;
-        ingredientUlElt.appendChild(ingredientLiElt);
-    })
-}
-
-function setAppliancesInDropdown() {
-    const appliances = getAppliances();
-    displayAppliances(appliances);
-}
-
-/**
- * 
- * @param {object} appliances
- */
-function displayAppliances(appliances) {
-    appliances.forEach(appliance => {
-        const applianceLiElt = document.createElement("li");
-        applianceLiElt.textContent = appliance;
-        applianceUlElt.appendChild(applianceLiElt);
-    })
-}
-
-function setUtensilsInDropdown() {
-    const utensils = getUtensils();
-    displayUtensils(utensils);
-}
-
-/**
- * 
- * @param {object} utensils
- */
-function displayUtensils(utensils) {
-    utensils.forEach(utensil => {
-        const utensilLiElt = document.createElement("li");
-        utensilLiElt.textContent = utensil;
-        utensilUlElt.appendChild(utensilLiElt);
-    })
 }
 
 /**
@@ -389,6 +293,3 @@ function searchRecipeInMainBar() {
 
 searchRecipeInMainBar();
 displayRecipesData();
-setIngredientsInDropdown();
-setAppliancesInDropdown();
-setUtensilsInDropdown();
