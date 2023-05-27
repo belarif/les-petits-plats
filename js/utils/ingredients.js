@@ -19,6 +19,23 @@ function getIngredients() {
     return Array.from(new Set (ingredients));
 }
 
+/**
+ * 
+ * @param {object} searchedRecipes 
+ * @returns {object}
+ */
+function getUpdatedIngredients(searchedRecipes) {
+    let updatedIngredients = [];
+
+    searchedRecipes.forEach(recipe => {
+        recipe.ingredients.forEach(ingredient => {
+            updatedIngredients = updatedIngredients.concat(ingredient.ingredient);
+        })
+    });
+
+    return Array.from (new Set (updatedIngredients));
+}
+
 function setIngredientsInDropdown() {
     const ingredients = getIngredients();
     displayIngredients(ingredients);

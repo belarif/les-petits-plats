@@ -16,6 +16,21 @@ function getAppliances() {
     return Array.from(new Set (appliances));
 }
 
+/**
+ * 
+ * @param {object} searchedRecipes 
+ * @returns {object}
+ */
+function getUpdatedAppliances(searchedRecipes) {
+    let updatedAppliances = [];
+
+    searchedRecipes.forEach(recipe => {
+        updatedAppliances = updatedAppliances.concat(recipe.appliance);
+    });
+
+    return Array.from (new Set (updatedAppliances));
+}
+
 function setAppliancesInDropdown() {
     const appliances = getAppliances();
     displayAppliances(appliances);

@@ -19,6 +19,23 @@ function getUtensils() {
     return Array.from(new Set (utensils));
 }
 
+/**
+ * 
+ * @param {object} searchedRecipes 
+ * @returns {object}
+ */
+function getUpdatedUtensils(searchedRecipes) {
+    let updatedUtensils = [];
+
+    searchedRecipes.forEach(recipe => {
+        recipe.ustensils.forEach(ustensil => {
+            updatedUtensils = updatedUtensils.concat(ustensil);
+        })
+    });
+
+    return Array.from (new Set (updatedUtensils));
+}
+
 function setUtensilsInDropdown() {
     const utensils = getUtensils();
     displayUtensils(utensils);
