@@ -78,7 +78,6 @@ function closeUtensilTag() {
     })
 }
 
-setUtensilsInDropdown();
 displayUtensilTag();
 closeUtensilTag();
 

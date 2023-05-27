@@ -76,6 +76,5 @@ function closeApplianceTag() {
     })
 }
 
-setAppliancesInDropdown();
 displayApplianceTag();
 closeApplianceTag();

@@ -33,10 +33,7 @@ function getDescriptions() {
     return Array.from(new Set (descriptions));
 }
 
-function displayRecipesData() {
-    const allRecipes = recipes;
-    displayRecipes(allRecipes);
-}
+
 
 /**
  * 
@@ -158,34 +155,6 @@ function getRecipesByIngredient(keyword) {
 
 /**
  * 
- * @param {object} recipes 
- * @returns {object}
- */
-function orderRecipesByName(recipes) {
-
-    return recipes.sort(function(a,b) { 
-        if (a.name < b.name) {
-            return -1;
-        } else if (a.name > b.name) {
-            return 1;
-        } else {
-            return 0;
-        }
-    });
-}
-
-function displayRecipes(recipes) {
-    const recipesOrderedByName = orderRecipesByName(recipes);
-
-    recipesOrderedByName.forEach((recipe) => {
-        const recipeModel = recipeCardsFactory(recipe);
-        const recipeDOM = recipeModel.getRecipeDOM();
-        recipeCardElt.appendChild(recipeDOM);
-    });
-}
-
-/**
- * 
  * @param {object} searchedRecipes 
  * @returns {object}
  */
@@ -237,9 +206,7 @@ function getUpdatedUtensils(searchedRecipes) {
  * 
  * @param {object} searchedRecipes 
  */
-function refreshDropdownsAndRecipesSection(searchedRecipes) {
-    rowCardElt.innerHTML = "";
-    displayRecipes(searchedRecipes);
+function refreshDropdowns(searchedRecipes) {
 
     ingredientUlElt.innerHTML = "";
     const updatedIngredients = getUpdatedIngredients(searchedRecipes);
@@ -257,6 +224,11 @@ function refreshDropdownsAndRecipesSection(searchedRecipes) {
     filterByUtensils(updatedUtensils);
 }
 
+function refreshRecipes(searchedRecipes) {
+    rowCardElt.innerHTML = "";
+    displayRecipes(searchedRecipes);
+}
+
 function searchRecipeInMainBar() {
     const mainSearch = document.querySelector(".main-search");
 
@@ -271,7 +243,9 @@ function searchRecipeInMainBar() {
             let searchedRecipes = [];
             searchedRecipes = searchedRecipes.concat(recipesByNames).concat(recipesByDescriptions).concat(recipesByIngredients);
             searchedRecipes = Array.from (new Set (searchedRecipes));
-            refreshDropdownsAndRecipesSection(searchedRecipes);
+
+            refreshRecipes(searchedRecipes);
+            refreshDropdowns(searchedRecipes);
 
         } else {
             rowCardElt.innerHTML = "";
@@ -279,7 +253,7 @@ function searchRecipeInMainBar() {
             applianceUlElt.innerHTML = "";
             utensilUlElt.innerHTML = "";
             
-            displayRecipesData();
+            init();
             setIngredientsInDropdown();
             setAppliancesInDropdown();
             setUtensilsInDropdown();
@@ -292,4 +266,3 @@ function searchRecipeInMainBar() {
 }
 
 searchRecipeInMainBar();
-displayRecipesData();

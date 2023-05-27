@@ -82,7 +82,7 @@ function refreshIngredientsDropdownAndRecipesSection(e) {
     searchedRecipes = Array.from (new Set (searchedRecipes));
 
     rowCardElt.innerHTML = "";
-    displayRecipes(searchedRecipes);
+    setRecipes(searchedRecipes);
 
     ingredientUlElt.innerHTML = "";
     const updatedIngredients = getUpdatedIngredients(searchedRecipes);
@@ -95,11 +95,11 @@ function closeIngredientTag() {
     const closeIngredientTagElt = document.querySelector(".ingredient-tag .badge");
     closeIngredientTagElt.addEventListener("click", () => {
         ingredientTagElt.style.display = "none";
-        displayRecipesData();
+        init();
         setIngredientsInDropdown();
     })
 }
 
 displayIngredientTag();
 closeIngredientTag();
-setIngredientsInDropdown();
+
