@@ -76,20 +76,25 @@ function displayApplianceTag() {
 
     appliancesLiElt.forEach(applianceLiElt => {
         applianceLiElt.addEventListener("click", () => {
-            const buttonTagElt = document.querySelector(".appliance-tag button");
-            buttonTagElt.textContent = applianceLiElt.textContent;
-            applianceTagElt.style.display = "block";
+            applianceLiElt.style.display = "none";
+            const buttonType = "btn btn-success";
+            const dropdownItem = "appliance";
 
+            createTagBtn(applianceLiElt, buttonType, dropdownItem);
+            closeApplianceTag();
         });
     });
 }
 
 function closeApplianceTag() {
-    const closeApplianceTagElt = document.querySelector(".appliance-tag .badge");
-    closeApplianceTagElt.addEventListener("click", () => {
-        applianceTagElt.style.display = "none";
-    })
+    const applianceTagElts = document.querySelectorAll(".appliance-tag");
+    applianceTagElts.forEach(applianceTagElt => {
+        const closeApplianceTagElt = applianceTagElt.childNodes[1];
+
+        closeApplianceTagElt.addEventListener("click", () => {
+            applianceTagElt.remove();
+        })
+    });
 }
 
 displayApplianceTag();
-closeApplianceTag();

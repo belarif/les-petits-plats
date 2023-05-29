@@ -4,7 +4,7 @@
  * 
  * @param {object} liElt 
  */
-function createTagBtn(liElt) {
+function createTagBtn(liElt, buttonType, filter) {
     const spanTagElt = document.createElement("span");
     spanTagElt.setAttribute("class", "badge");
 
@@ -13,11 +13,11 @@ function createTagBtn(liElt) {
     spanTagElt.appendChild(closeTagElt);
 
     const btnTagElt = document.createElement("button");
-    btnTagElt.setAttribute("class", "btn btn-primary");
+    btnTagElt.setAttribute("class", buttonType);
     btnTagElt.textContent = liElt.textContent;
 
     const divTagElt = document.createElement("div");
-    divTagElt.setAttribute("class", "ingredient-tag");
+    divTagElt.setAttribute("class", `${filter}-tag`);
     
     const tagElts = document.querySelector(".tags");
     tagElts.appendChild(divTagElt);

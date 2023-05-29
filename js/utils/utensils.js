@@ -81,20 +81,27 @@ function displayUtensilTag() {
 
     utensilsLiElt.forEach(utensilLiElt => {
         utensilLiElt.addEventListener("click", () => {
-            const buttonTagElt = document.querySelector(".utensil-tag button");
-            buttonTagElt.textContent = utensilLiElt.textContent;
-            utensilTagElt.style.display = "block";
+            utensilLiElt.style.display = "none";
+            const buttonType = "btn btn-danger";
+            const dropdownItem = "utensil";
+
+            createTagBtn(utensilLiElt, buttonType, dropdownItem);
+            closeUtensilTag();
         });
     });
 }
 
 function closeUtensilTag() {
-    const closeUtensilTagElt = document.querySelector(".utensil-tag .badge");
-    closeUtensilTagElt.addEventListener("click", () => {
-        utensilTagElt.style.display = "none";
-    })
+    const utensilTagElts = document.querySelectorAll(".utensil-tag");
+    utensilTagElts.forEach(utensilTagElt => {
+        const closeUtensilTagElt = utensilTagElt.childNodes[1];
+
+        closeUtensilTagElt.addEventListener("click", () => {
+            utensilTagElt.remove();
+        })
+    });
 }
 
 displayUtensilTag();
-closeUtensilTag();
+
 

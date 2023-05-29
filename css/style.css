@@ -25,7 +25,8 @@ body {
 .filter .filters,
 .filter .tags {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 0 20px;
 }
 .filter .ingredient .dropdown-wrapper,
 .filter .ingredient .search,

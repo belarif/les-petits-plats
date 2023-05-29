@@ -100,35 +100,14 @@ function displayIngredientTag() {
     ingredientsLiElt.forEach(ingredientLiElt => {
         ingredientLiElt.addEventListener("click", (e) => {
             ingredientLiElt.style.display = "none";
+            const buttonType = "btn btn-primary";
+            const dropdownItem = "ingredient";
 
-            createTagBtn(ingredientLiElt)
+            createTagBtn(ingredientLiElt, buttonType, dropdownItem);
             closeIngredientTag();
         });
     });
 }
-
-// function createIngredientTagBtn(ingredientLiElt) {
-//     const spanTagElt = document.createElement("span");
-//     spanTagElt.setAttribute("class", "badge");
-
-//     const closeTagElt = document.createElement("i");
-//     closeTagElt.setAttribute("class", "bi bi-x-circle");
-//     spanTagElt.appendChild(closeTagElt);
-
-//     const buttonTagElt = document.createElement("button");
-//     buttonTagElt.setAttribute("class", "btn btn-primary");
-//     buttonTagElt.textContent = ingredientLiElt.textContent;
-
-//     const divIngredientTagElt = document.createElement("div");
-//     divIngredientTagElt.setAttribute("class", "ingredient-tag");
-    
-//     const tagsElts = document.querySelector(".tags");
-//     tagsElts.appendChild(divIngredientTagElt);
-//     divIngredientTagElt.appendChild(buttonTagElt);
-//     divIngredientTagElt.appendChild(spanTagElt);
-    
-//     divIngredientTagElt.style.display = "block";
-// }
 
 function closeIngredientTag() {
     const ingredientTagElts = document.querySelectorAll(".ingredient-tag");
