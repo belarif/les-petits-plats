@@ -57,22 +57,28 @@ function displayUtensils(utensils) {
  * 
  * @param {object} updatedUtensils 
  */
-function filterByUtensils(updatedUtensils) {
-    const autensilsSearchElt = document.querySelector(".utensil .search");
+function filterByUtensils() {
+    const utensilsSearchElt = document.querySelector(".utensil .search");
 
-    autensilsSearchElt.addEventListener("keyup", (e) => {
+    utensilsSearchElt.addEventListener("keyup", (e) => {
         let searchedUtensils = [];
-        let keyword = e.target.value;
+        let keywordUtensil = e.target.value;
+        const searchedRecipes = getRecipesByNameDescriptionAndIngredient(keywordUtensil);
+        const updatedUtensils = getUpdatedUtensils(searchedRecipes);
         
-        filterByDropdown(updatedUtensils, searchedUtensils, keyword);
+        filterByDropdown(updatedUtensils, searchedUtensils, keywordUtensil);
 
-        if (keyword.length >= 3) {
+        if (keywordUtensil.length >= 3) {
             utensilUlElt.innerHTML = "";
             displayUtensils(searchedUtensils); 
         } else {
             utensilUlElt.innerHTML = "";
             displayUtensils(updatedUtensils);
         }
+
+        displayIngredientTag();
+        displayApplianceTag();
+        displayUtensilTag();
     });
 }
 
@@ -101,7 +107,4 @@ function closeUtensilTag() {
         })
     });
 }
-
-displayUtensilTag();
-
 

@@ -35,6 +35,14 @@ function init() {
     setIngredientsInDropdown();
     setAppliancesInDropdown();
     setUtensilsInDropdown();
+
+    filterByIngredients();
+    filterByAppliances();
+    filterByUtensils()
+
+    displayIngredientTag();
+    displayApplianceTag();
+    displayUtensilTag();
 }
 
 init();

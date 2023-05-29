@@ -193,7 +193,6 @@ function refreshRecipes(searchedRecipes) {
  * @returns {object}
  */
 function getRecipesByNameDescriptionAndIngredient(keyword) {
-    
     const recipesByNames = getRecipesByName(keyword);
     const recipesByDescriptions = getRecipesByDescription(keyword);
     const recipesByIngredients = getRecipesByIngredient(keyword);
