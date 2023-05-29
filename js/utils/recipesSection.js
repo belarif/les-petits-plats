@@ -33,8 +33,6 @@ function getDescriptions() {
     return Array.from(new Set (descriptions));
 }
 
-
-
 /**
  * 
  * @param {string} keyword 
@@ -195,6 +193,7 @@ function refreshRecipes(searchedRecipes) {
  * @returns {object}
  */
 function getRecipesByNameDescriptionAndIngredient(keyword) {
+    
     const recipesByNames = getRecipesByName(keyword);
     const recipesByDescriptions = getRecipesByDescription(keyword);
     const recipesByIngredients = getRecipesByIngredient(keyword);
@@ -208,12 +207,11 @@ function getRecipesByNameDescriptionAndIngredient(keyword) {
 
 function searchRecipeInMainBar() {
     const mainSearch = document.querySelector(".main-search");
-
     mainSearch.addEventListener("keyup", (e) => {
-        let keyword = e.target.value;        
+        let keywordMainSearch = e.target.value;        
 
-        if (keyword.length >= 3) {
-            const searchedRecipes = getRecipesByNameDescriptionAndIngredient(keyword);
+        if (keywordMainSearch.length >= 3) {
+            const searchedRecipes = getRecipesByNameDescriptionAndIngredient(keywordMainSearch);
             refreshRecipes(searchedRecipes);
             refreshDropdowns(searchedRecipes);
 
