@@ -76,8 +76,6 @@ function filterByUtensils() {
             displayUtensils(updatedUtensils);
         }
 
-        displayIngredientTag();
-        displayApplianceTag();
         displayUtensilTag();
     });
 }

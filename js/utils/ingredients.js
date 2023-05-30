@@ -73,8 +73,6 @@ function filterByIngredients() {
         }
 
         displayIngredientTag();
-        displayApplianceTag();
-        displayUtensilTag();
     });
 }
 

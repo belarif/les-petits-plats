@@ -67,9 +67,7 @@ function filterByAppliances() {
             displayAppliances(updatedApplicances);
         }
 
-        displayIngredientTag();
         displayApplianceTag();
-        displayUtensilTag();
     });
 }
 
