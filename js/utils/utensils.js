@@ -38,19 +38,7 @@ function getUpdatedUtensils(searchedRecipes) {
 
 function setUtensilsInDropdown() {
     const utensils = getUtensils();
-    displayUtensils(utensils);
-}
-
-/**
- * 
- * @param {object} utensils
- */
-function displayUtensils(utensils) {
-    utensils.forEach(utensil => {
-        const utensilLiElt = document.createElement("li");
-        utensilLiElt.textContent = utensil;
-        utensilUlElt.appendChild(utensilLiElt);
-    })
+    displayItemsDropdown(utensils, utensilUlElt);
 }
 
 /**
@@ -70,10 +58,10 @@ function filterByUtensils() {
 
         if (keywordUtensil.length >= 3) {
             utensilUlElt.innerHTML = "";
-            displayUtensils(searchedUtensils); 
+            displayItemsDropdown(searchedUtensils, utensilUlElt); 
         } else {
             utensilUlElt.innerHTML = "";
-            displayUtensils(updatedUtensils);
+            displayItemsDropdown(updatedUtensils, utensilUlElt);
         }
 
         displayUtensilTag();

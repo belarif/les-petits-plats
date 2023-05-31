@@ -17,3 +17,11 @@ function filterByDropdown(itemsSearch, searchedItems, keyword) {
     });
 }
 
+function displayItemsDropdown(items, ulElt) {
+    items.forEach(item => {
+        const liElt = document.createElement("li");
+        liElt.textContent = item;
+        ulElt.appendChild(liElt);
+    })
+}
+

@@ -38,19 +38,7 @@ function getUpdatedIngredients(searchedRecipes) {
 
 function setIngredientsInDropdown() {
     const ingredients = getIngredients();
-    displayIngredients(ingredients);
-}
-
-/**
- * 
- * @param {object} ingredients 
- */
-function displayIngredients(ingredients) {
-    ingredients.forEach(ingredient => {
-        const ingredientLiElt = document.createElement("li");
-        ingredientLiElt.textContent = ingredient;
-        ingredientUlElt.appendChild(ingredientLiElt);
-    })
+    displayItemsDropdown(ingredients, ingredientUlElt);
 }
 
 function filterByIngredients() {
@@ -66,10 +54,10 @@ function filterByIngredients() {
 
         if (keywordIngredient.length >= 3) {
             ingredientUlElt.innerHTML = "";
-            displayIngredients(searchedIngredients); 
+            displayItemsDropdown(searchedIngredients, ingredientUlElt); 
         } else {
             ingredientUlElt.innerHTML = "";
-            displayIngredients(updatedIngredients);
+            displayItemsDropdown(updatedIngredients, ingredientUlElt);
         }
 
         displayIngredientTag();

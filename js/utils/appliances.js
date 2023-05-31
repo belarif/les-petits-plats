@@ -33,19 +33,7 @@ function getUpdatedAppliances(searchedRecipes) {
 
 function setAppliancesInDropdown() {
     const appliances = getAppliances();
-    displayAppliances(appliances);
-}
-
-/**
- * 
- * @param {object} appliances
- */
-function displayAppliances(appliances) {
-    appliances.forEach(appliance => {
-        const applianceLiElt = document.createElement("li");
-        applianceLiElt.textContent = appliance;
-        applianceUlElt.appendChild(applianceLiElt);
-    })
+    displayItemsDropdown(appliances, applianceUlElt);
 }
 
 function filterByAppliances() {
@@ -61,10 +49,10 @@ function filterByAppliances() {
 
         if (keywordAppliance.length >= 3) {
             applianceUlElt.innerHTML = "";
-            displayAppliances(searchedAppliances); 
+            displayItemsDropdown(searchedAppliances, applianceUlElt); 
         } else {
             applianceUlElt.innerHTML = "";
-            displayAppliances(updatedApplicances);
+            displayItemsDropdown(updatedApplicances, applianceUlElt);
         }
 
         displayApplianceTag();

@@ -180,15 +180,15 @@ function getRecipesByNameDescriptionAndIngredient(keyword) {
 function refreshDropdowns(searchedRecipes) {
     ingredientUlElt.innerHTML = "";
     const updatedIngredients = getUpdatedIngredients(searchedRecipes);
-    displayIngredients(updatedIngredients);
+    displayItemsDropdown(updatedIngredients, ingredientUlElt);
 
     applianceUlElt.innerHTML = "";
     const updatedApplicances = getUpdatedAppliances(searchedRecipes);
-    displayAppliances(updatedApplicances); 
+    displayItemsDropdown(updatedApplicances, applianceUlElt); 
 
     utensilUlElt.innerHTML = "";
     const updatedUtensils = getUpdatedUtensils(searchedRecipes);
-    displayUtensils(updatedUtensils);
+    displayItemsDropdown(updatedUtensils, utensilUlElt);
 }
 
 /**
