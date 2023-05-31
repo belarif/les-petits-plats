@@ -76,24 +76,6 @@ function filterByIngredients() {
     });
 }
 
-function refreshIngredientsDropdownAndRecipesSection(e) {
-    const ingredientTag = e.target.textContent;
-    const recipesByIngredients = getRecipesByIngredient(ingredientTag);
-    let searchedRecipes = [];
-
-    searchedRecipes = searchedRecipes.concat(recipesByIngredients);  //.concat(recipesByNames).concat(recipesByDescriptions)
-    searchedRecipes = Array.from (new Set (searchedRecipes));
-
-    rowCardElt.innerHTML = "";
-    setRecipes(searchedRecipes);
-
-    ingredientUlElt.innerHTML = "";
-    const updatedIngredients = getUpdatedIngredients(searchedRecipes);
-
-    displayIngredients(updatedIngredients);
-    // filterByIngredients(updatedIngredients);
-}
-
 function displayIngredientTag() {
     const ingredientsLiElt = document.querySelectorAll(".ingredient .dropdown-ul li");
    
