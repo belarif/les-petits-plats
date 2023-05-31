@@ -158,37 +158,6 @@ function getRecipesByIngredient(keyword) {
 
 /**
  * 
- * @param {object} searchedRecipes 
- */
-function refreshDropdowns(searchedRecipes) {
-
-    ingredientUlElt.innerHTML = "";
-    const updatedIngredients = getUpdatedIngredients(searchedRecipes);
-    displayIngredients(updatedIngredients);
-    filterByIngredients(updatedIngredients);
-
-    applianceUlElt.innerHTML = "";
-    const updatedApplicances = getUpdatedAppliances(searchedRecipes);
-    displayAppliances(updatedApplicances); 
-    filterByAppliances(updatedApplicances);
-
-    utensilUlElt.innerHTML = "";
-    const updatedUtensils = getUpdatedUtensils(searchedRecipes);
-    displayUtensils(updatedUtensils);
-    filterByUtensils(updatedUtensils);
-}
-
-/**
- * 
- * @param {object} searchedRecipes 
- */
-function refreshRecipes(searchedRecipes) {
-    rowCardElt.innerHTML = "";
-    setRecipes(searchedRecipes);
-}
-
-/**
- * 
  * @param {string} keyword 
  * @returns {object}
  */
@@ -204,6 +173,33 @@ function getRecipesByNameDescriptionAndIngredient(keyword) {
     return searchedRecipes;
 }
 
+/**
+ * 
+ * @param {object} searchedRecipes 
+ */
+function refreshDropdowns(searchedRecipes) {
+    ingredientUlElt.innerHTML = "";
+    const updatedIngredients = getUpdatedIngredients(searchedRecipes);
+    displayIngredients(updatedIngredients);
+
+    applianceUlElt.innerHTML = "";
+    const updatedApplicances = getUpdatedAppliances(searchedRecipes);
+    displayAppliances(updatedApplicances); 
+
+    utensilUlElt.innerHTML = "";
+    const updatedUtensils = getUpdatedUtensils(searchedRecipes);
+    displayUtensils(updatedUtensils);
+}
+
+/**
+ * 
+ * @param {object} searchedRecipes 
+ */
+function refreshRecipes(searchedRecipes) {
+    rowCardElt.innerHTML = "";
+    setRecipes(searchedRecipes);
+}
+
 function searchRecipeInMainBar() {
     const mainSearch = document.querySelector(".main-search");
     mainSearch.addEventListener("keyup", (e) => {
@@ -211,9 +207,9 @@ function searchRecipeInMainBar() {
 
         if (keywordMainSearch.length >= 3) {
             const searchedRecipes = getRecipesByNameDescriptionAndIngredient(keywordMainSearch);
+
             refreshRecipes(searchedRecipes);
             refreshDropdowns(searchedRecipes);
-
         } else {
             rowCardElt.innerHTML = "";
             ingredientUlElt.innerHTML = "";
@@ -229,3 +225,5 @@ function searchRecipeInMainBar() {
 }
 
 searchRecipeInMainBar();
+
+
