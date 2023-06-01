@@ -31,6 +31,47 @@ function getUpdatedAppliances(searchedRecipes) {
     return Array.from (new Set (updatedAppliances));
 }
 
+/**
+ * 
+ * @param {string} keyword 
+ * @returns 
+ */
+function searchInAppliances(keyword) {
+    const appliances = getAppliances();
+    let searchedAppliances = [];
+
+    appliances.forEach(appliance => {
+        let regex = new RegExp(keyword, "ig");
+        let search = appliance.match(regex);
+        
+        if (search) {
+            searchedAppliances.unshift(appliance);
+            
+        }
+    });
+
+    return searchedAppliances;
+}
+
+/**
+ * 
+ * @param {string} keyword 
+ * @returns 
+ */
+function getRecipesByAppliances(keyword) {
+    const searchedAppliances = searchInAppliances(keyword);
+    let recipesByAppliances = [];
+
+    searchedAppliances.forEach(appliance => {
+        const recipesByAppliance = recipes.filter((recipe) => { 
+            return recipe.appliance === appliance;
+        });
+        recipesByAppliances = recipesByAppliances.concat(recipesByAppliance);
+    });
+
+    return recipesByAppliances;
+}
+
 function setAppliancesInDropdown() {
     const appliances = getAppliances();
     displayItemsDropdown(appliances, applianceUlElt);
@@ -63,8 +104,12 @@ function filterByAppliances() {
     const appliancesLiElt = document.querySelectorAll(".appliance .dropdown-ul li");
 
     appliancesLiElt.forEach(applianceLiElt => {
-        applianceLiElt.addEventListener("click", () => {
+        applianceLiElt.addEventListener("click", (e) => {
             displayApplianceTag(applianceLiElt);
+
+            const applianceTag = e.target.innerText;
+            const searchedRecipes = getRecipesByAppliances(applianceTag);
+            refreshRecipes(searchedRecipes);
         });
     });
 }

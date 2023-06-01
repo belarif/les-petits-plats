@@ -36,6 +36,51 @@ function getUpdatedUtensils(searchedRecipes) {
     return Array.from (new Set (updatedUtensils));
 }
 
+/**
+ * 
+ * @param {string} keyword 
+ * @returns 
+ */
+function searchInUtensils(keyword) {
+    const utensils = getUtensils();
+    let searchedUtensils = [];
+
+    utensils.forEach(utensil => {
+        let regex = new RegExp(keyword, "ig");
+        let search = utensil.match(regex);
+        
+        if (search) {
+            searchedUtensils.unshift(utensil);
+            
+        }
+    });
+
+    return searchedUtensils;
+}
+
+/**
+ * 
+ * @param {string} keyword 
+ * @returns 
+ */
+function getRecipesByUtensils(keyword) {
+    const searchedUtensils = searchInUtensils(keyword);
+    const recipesByUtensils = recipes.filter((recipe) => { 
+        
+        let result = false;
+        recipe.ustensils.forEach(utensil => {
+            const r = searchedUtensils.includes(utensil);
+            if (r) {
+                result = true;
+            }
+        });
+        
+        return result;
+    });
+       
+    return recipesByUtensils;
+}
+
 function setUtensilsInDropdown() {
     const utensils = getUtensils();
     displayItemsDropdown(utensils, utensilUlElt);
@@ -68,8 +113,12 @@ function filterByUtensils() {
     const utensilsLiElt = document.querySelectorAll(".utensil .dropdown-ul li");
 
     utensilsLiElt.forEach(utensilLiElt => {
-        utensilLiElt.addEventListener("click", () => {
+        utensilLiElt.addEventListener("click", (e) => {
             displayUtensilTag(utensilLiElt);
+
+            const utensilTag = e.target.innerText;
+            const searchedRecipes = getRecipesByUtensils(utensilTag);
+            refreshRecipes(searchedRecipes);
         });
     });
 }

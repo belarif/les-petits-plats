@@ -68,8 +68,12 @@ function filterByIngredients() {
     const ingredientsLiElt = document.querySelectorAll(".ingredient .dropdown-ul li");
     
     ingredientsLiElt.forEach(ingredientLiElt => {
-        ingredientLiElt.addEventListener("click", () => {
+        ingredientLiElt.addEventListener("click", (e) => {
             displayIngredientTag(ingredientLiElt);
+
+            const ingredientTag = e.target.innerText;
+            const searchedRecipes = getRecipesByIngredient(ingredientTag);
+            refreshRecipes(searchedRecipes);
         });
     });
 }
