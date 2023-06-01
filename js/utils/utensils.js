@@ -60,23 +60,31 @@ function searchRecipesInUtensilsBar() {
             displayItemsDropdown(updatedUtensils, utensilUlElt);
         }
 
-        displayUtensilTag();
+        filterByUtensils();
     });
 }
 
-function displayUtensilTag() {
+function filterByUtensils() {
     const utensilsLiElt = document.querySelectorAll(".utensil .dropdown-ul li");
 
     utensilsLiElt.forEach(utensilLiElt => {
         utensilLiElt.addEventListener("click", () => {
-            utensilLiElt.style.display = "none";
-            const buttonType = "btn btn-danger";
-            const dropdownItem = "utensil";
-
-            createTagBtn(utensilLiElt, buttonType, dropdownItem);
-            closeUtensilTag();
+            displayUtensilTag(utensilLiElt);
         });
     });
+}
+
+/**
+ * 
+ * @param {object} utensilLiElt 
+ */
+function displayUtensilTag(utensilLiElt) {
+    utensilLiElt.style.display = "none";
+    const buttonType = "btn btn-danger";
+    const dropdownItem = "utensil";
+
+    createTagBtn(utensilLiElt, buttonType, dropdownItem);
+    closeUtensilTag();
 }
 
 function closeUtensilTag() {

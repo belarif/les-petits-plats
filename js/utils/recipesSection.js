@@ -173,33 +173,6 @@ function getRecipesByNameDescriptionAndIngredient(keyword) {
     return searchedRecipes;
 }
 
-/**
- * 
- * @param {object} searchedRecipes 
- */
-function refreshDropdowns(searchedRecipes) {
-    ingredientUlElt.innerHTML = "";
-    const updatedIngredients = getUpdatedIngredients(searchedRecipes);
-    displayItemsDropdown(updatedIngredients, ingredientUlElt);
-
-    applianceUlElt.innerHTML = "";
-    const updatedApplicances = getUpdatedAppliances(searchedRecipes);
-    displayItemsDropdown(updatedApplicances, applianceUlElt); 
-
-    utensilUlElt.innerHTML = "";
-    const updatedUtensils = getUpdatedUtensils(searchedRecipes);
-    displayItemsDropdown(updatedUtensils, utensilUlElt);
-}
-
-/**
- * 
- * @param {object} searchedRecipes 
- */
-function refreshRecipes(searchedRecipes) {
-    rowCardElt.innerHTML = "";
-    setRecipes(searchedRecipes);
-}
-
 function searchRecipesInMainBar() {
     const mainSearch = document.querySelector(".main-search");
     mainSearch.addEventListener("keyup", (e) => {
@@ -218,9 +191,9 @@ function searchRecipesInMainBar() {
             init();
         }
 
-        displayIngredientTag();
-        displayApplianceTag();
-        displayUtensilTag();
+        filterByIngredients();
+        filterByAppliances();
+        filterByUtensils();
     });
 }
 

@@ -60,23 +60,31 @@ function searchRecipesInIngredientsBar() {
             displayItemsDropdown(updatedIngredients, ingredientUlElt);
         }
 
-        displayIngredientTag();
+        filterByIngredients(searchedRecipes);
     });
 }
 
-function displayIngredientTag() {
+function filterByIngredients() {
     const ingredientsLiElt = document.querySelectorAll(".ingredient .dropdown-ul li");
-   
+    
     ingredientsLiElt.forEach(ingredientLiElt => {
-        ingredientLiElt.addEventListener("click", (e) => {
-            ingredientLiElt.style.display = "none";
-            const buttonType = "btn btn-primary";
-            const dropdownItem = "ingredient";
-
-            createTagBtn(ingredientLiElt, buttonType, dropdownItem);
-            closeIngredientTag();
+        ingredientLiElt.addEventListener("click", () => {
+            displayIngredientTag(ingredientLiElt);
         });
     });
+}
+
+/**
+ * 
+ * @param {object} ingredientLiElt 
+ */
+function displayIngredientTag(ingredientLiElt) {
+    ingredientLiElt.style.display = "none";
+    const buttonType = "btn btn-primary";
+    const dropdownItem = "ingredient";
+
+    createTagBtn(ingredientLiElt, buttonType, dropdownItem);
+    closeIngredientTag();
 }
 
 function closeIngredientTag() {
