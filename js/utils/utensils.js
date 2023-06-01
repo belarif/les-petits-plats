@@ -63,13 +63,12 @@ function searchInUtensils(keyword) {
  * @param {string} keyword 
  * @returns 
  */
-function getRecipesByUtensils(keyword) {
-    const searchedUtensils = searchInUtensils(keyword);
+function getRecipesByUtensilsTags(utensilTags) {
     const recipesByUtensils = recipes.filter((recipe) => { 
         
         let result = false;
         recipe.ustensils.forEach(utensil => {
-            const r = searchedUtensils.includes(utensil);
+            const r = utensilTags.includes(utensil);
             if (r) {
                 result = true;
             }
@@ -111,13 +110,15 @@ function searchRecipesInUtensilsBar() {
 
 function filterByUtensils() {
     const utensilsLiElt = document.querySelectorAll(".utensil .dropdown-ul li");
+    let utensilTags = [];
 
     utensilsLiElt.forEach(utensilLiElt => {
         utensilLiElt.addEventListener("click", (e) => {
             displayUtensilTag(utensilLiElt);
 
             const utensilTag = e.target.innerText;
-            const searchedRecipes = getRecipesByUtensils(utensilTag);
+            utensilTags = utensilTags.concat(utensilTag);
+            const searchedRecipes = getRecipesByUtensilsTags(utensilTags);
             refreshRecipes(searchedRecipes);
         });
     });

@@ -58,11 +58,10 @@ function searchInAppliances(keyword) {
  * @param {string} keyword 
  * @returns 
  */
-function getRecipesByAppliances(keyword) {
-    const searchedAppliances = searchInAppliances(keyword);
+function getRecipesByAppliancesTags(applianceTags) {
     let recipesByAppliances = [];
 
-    searchedAppliances.forEach(appliance => {
+    applianceTags.forEach(appliance => {
         const recipesByAppliance = recipes.filter((recipe) => { 
             return recipe.appliance === appliance;
         });
@@ -102,13 +101,15 @@ function searchRecipesInAppliancesBar() {
 
 function filterByAppliances() {
     const appliancesLiElt = document.querySelectorAll(".appliance .dropdown-ul li");
+    let applianceTags = [];
 
     appliancesLiElt.forEach(applianceLiElt => {
         applianceLiElt.addEventListener("click", (e) => {
             displayApplianceTag(applianceLiElt);
 
             const applianceTag = e.target.innerText;
-            const searchedRecipes = getRecipesByAppliances(applianceTag);
+            applianceTags = applianceTags.concat(applianceTag);
+            const searchedRecipes = getRecipesByAppliancesTags(applianceTags);
             refreshRecipes(searchedRecipes);
         });
     });

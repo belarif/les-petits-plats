@@ -64,19 +64,40 @@ function searchRecipesInIngredientsBar() {
     });
 }
 
+function getRecipesByIngredientsTags(ingredientTags) {
+    const recipesByIngredients = recipes.filter((recipe) => { 
+        
+        let result = false;
+        recipe.ingredients.forEach(ingredient => {
+            const r = ingredientTags.includes(ingredient.ingredient);
+            if (r) {
+                result = true;
+            }
+        });
+        
+        return result;
+    });
+       
+    return recipesByIngredients;
+}
+
 function filterByIngredients() {
     const ingredientsLiElt = document.querySelectorAll(".ingredient .dropdown-ul li");
+    let ingredientTags = [];
     
     ingredientsLiElt.forEach(ingredientLiElt => {
+        
         ingredientLiElt.addEventListener("click", (e) => {
             displayIngredientTag(ingredientLiElt);
 
             const ingredientTag = e.target.innerText;
-            const searchedRecipes = getRecipesByIngredient(ingredientTag);
+            ingredientTags = ingredientTags.concat(ingredientTag);
+            searchedRecipes = getRecipesByIngredientsTags(ingredientTags);
             refreshRecipes(searchedRecipes);
         });
     });
 }
+
 
 /**
  * 
