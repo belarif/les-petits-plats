@@ -41,11 +41,7 @@ function setUtensilsInDropdown() {
     displayItemsDropdown(utensils, utensilUlElt);
 }
 
-/**
- * 
- * @param {object} updatedUtensils 
- */
-function filterByUtensils() {
+function searchRecipesInUtensilsBar() {
     const utensilsSearchElt = document.querySelector(".utensil .search");
 
     utensilsSearchElt.addEventListener("keyup", (e) => {

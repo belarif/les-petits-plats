@@ -36,7 +36,7 @@ function setAppliancesInDropdown() {
     displayItemsDropdown(appliances, applianceUlElt);
 }
 
-function filterByAppliances() {
+function searchRecipesInAppliancesBar() {
     const appliancesSearchElt = document.querySelector(".appliance .search");
 
     appliancesSearchElt.addEventListener("keyup", (e) => {

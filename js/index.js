@@ -36,9 +36,9 @@ function init() {
     setAppliancesInDropdown();
     setUtensilsInDropdown();
 
-    filterByIngredients();
-    filterByAppliances();
-    filterByUtensils()
+    searchRecipesInIngredientsBar();
+    searchRecipesInAppliancesBar();
+    searchRecipesInUtensilsBar();
 
     displayIngredientTag();
     displayApplianceTag();

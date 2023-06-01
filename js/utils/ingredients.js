@@ -41,13 +41,13 @@ function setIngredientsInDropdown() {
     displayItemsDropdown(ingredients, ingredientUlElt);
 }
 
-function filterByIngredients() {
+function searchRecipesInIngredientsBar() {
     const ingredientsSearchElt = document.querySelector(".ingredient .search");
 
     ingredientsSearchElt.addEventListener("keyup", (e) => {
         let keywordIngredient = e.target.value;
         let searchedIngredients = [];
-        const searchedRecipes = getRecipesByNameDescriptionAndIngredient(keywordIngredient);
+        const searchedRecipes = getRecipesByIngredient(keywordIngredient);
         const updatedIngredients = getUpdatedIngredients(searchedRecipes);
         
         filterByDropdown(updatedIngredients, searchedIngredients, keywordIngredient);

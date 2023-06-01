@@ -200,7 +200,7 @@ function refreshRecipes(searchedRecipes) {
     setRecipes(searchedRecipes);
 }
 
-function searchRecipeInMainBar() {
+function searchRecipesInMainBar() {
     const mainSearch = document.querySelector(".main-search");
     mainSearch.addEventListener("keyup", (e) => {
         let keywordMainSearch = e.target.value;        
@@ -224,6 +224,6 @@ function searchRecipeInMainBar() {
     });
 }
 
-searchRecipeInMainBar();
+searchRecipesInMainBar();
 
 
