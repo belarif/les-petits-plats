@@ -2,6 +2,7 @@
 
 // DOM elements
 const ingredientTagElt = document.querySelector(".ingredient-tag");
+let ingredientTags = [];
 
 /**
  *
@@ -69,7 +70,6 @@ function searchRecipesInIngredientsBar() {
 }
 
 function getRecipesByIngredientsTags(ingredientTags) {
-  console.log("getRecipesByIngredientsTags", ingredientTags);
   let results = recipes;
   ingredientTags.forEach((ingredientTag) => {
     results = results.filter((recipe) => {
@@ -79,10 +79,9 @@ function getRecipesByIngredientsTags(ingredientTags) {
       return r ? r : false;
     });
   });
-  console.log("results", results);
   return results;
 }
-let ingredientTags = [];
+
 function filterByIngredients() {
   const ingredientsLiElt = document.querySelectorAll(
     ".ingredient .dropdown-ul li"
@@ -94,7 +93,6 @@ function filterByIngredients() {
 
       const ingredientTag = e.target.innerText;
       ingredientTags = ingredientTags.concat(ingredientTag);
-      // aller chercher les tags existant
       searchedRecipes = getRecipesByIngredientsTags(ingredientTags);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
