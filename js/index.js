@@ -43,15 +43,15 @@ function refreshRecipes(searchedRecipes) {
 function refreshDropdowns(searchedRecipes) {
   ingredientUlElt.innerHTML = "";
   const updatedIngredients = getUpdatedIngredients(searchedRecipes);
-  displayItemsDropdown(updatedIngredients, ingredientUlElt);
+  setItemsDropdown(updatedIngredients, ingredientUlElt);
 
   applianceUlElt.innerHTML = "";
   const updatedApplicances = getUpdatedAppliances(searchedRecipes);
-  displayItemsDropdown(updatedApplicances, applianceUlElt);
+  setItemsDropdown(updatedApplicances, applianceUlElt);
 
   utensilUlElt.innerHTML = "";
   const updatedUtensils = getUpdatedUtensils(searchedRecipes);
-  displayItemsDropdown(updatedUtensils, utensilUlElt);
+  setItemsDropdown(updatedUtensils, utensilUlElt);
 }
 
 function init() {
