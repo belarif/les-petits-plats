@@ -121,6 +121,12 @@ function closeIngredientTag() {
 
     closeIngredientTagElt.addEventListener("click", () => {
       ingredientTagElt.remove();
+      const index = ingredientTags.indexOf(ingredientTagElt.textContent);
+      ingredientTags.splice(index, 1);
+      searchedRecipes = getRecipesByIngredientsTags(ingredientTags);
+      refreshRecipes(searchedRecipes);
+      refreshDropdowns(searchedRecipes);
+      filterByIngredients();
     });
   });
 }

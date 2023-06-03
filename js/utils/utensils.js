@@ -142,6 +142,13 @@ function closeUtensilTag() {
 
         closeUtensilTagElt.addEventListener("click", () => {
             utensilTagElt.remove();
+
+            const index = utensilTags.indexOf(utensilTagElt.textContent);
+            utensilTags.splice(index, 1);
+            searchedRecipes = getRecipesByUtensilsTags(utensilTags);
+            refreshRecipes(searchedRecipes);
+            refreshDropdowns(searchedRecipes);
+            filterByUtensils();
         })
     });
 }
