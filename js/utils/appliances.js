@@ -2,6 +2,7 @@
 
 // DOM elements
 const applianceTagElt = document.querySelector(".appliance-tag");
+let applianceTags = [];
 
 /**
  * 
@@ -59,16 +60,15 @@ function searchInAppliances(keyword) {
  * @returns 
  */
 function getRecipesByAppliancesTags(applianceTags) {
-    let recipesByAppliances = [];
-
-    applianceTags.forEach(appliance => {
-        const recipesByAppliance = recipes.filter((recipe) => { 
-            return recipe.appliance === appliance;
-        });
-        recipesByAppliances = recipesByAppliances.concat(recipesByAppliance);
+    let results = recipes;
+    applianceTags.forEach((applianceTag) => {
+      results = results.filter((recipe) => {
+        if(recipe.appliance === applianceTag) {
+            return recipe;
+        }
     });
-
-    return recipesByAppliances;
+  });
+  return results;
 }
 
 function setAppliancesInDropdown() {
@@ -101,7 +101,6 @@ function searchRecipesInAppliancesBar() {
 
 function filterByAppliances() {
     const appliancesLiElt = document.querySelectorAll(".appliance .dropdown-ul li");
-    let applianceTags = [];
 
     appliancesLiElt.forEach(applianceLiElt => {
         applianceLiElt.addEventListener("click", (e) => {
@@ -111,6 +110,8 @@ function filterByAppliances() {
             applianceTags = applianceTags.concat(applianceTag);
             const searchedRecipes = getRecipesByAppliancesTags(applianceTags);
             refreshRecipes(searchedRecipes);
+            refreshDropdowns(searchedRecipes);
+            filterByAppliances();
         });
     });
 }

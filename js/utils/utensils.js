@@ -2,7 +2,7 @@
 
 // DOM elements
 const utensilTagElt = document.querySelector(".utensil-tag");
-let recipesByUstensils = [];
+let utensilTags = [];
 
 /**
  * 
@@ -71,10 +71,9 @@ function getRecipesByUtensilsTags(utensilTags) {
         const r = recipe.ustensils.find((ustensil) => {
             return ustensil.includes(utensilTag);
         });
-        return r ? r : false;
+            return r ? r : false;
         });
     });
-    
     return results;
 }
 
@@ -108,7 +107,6 @@ function searchRecipesInUtensilsBar() {
 
 function filterByUtensils() {
     const utensilsLiElt = document.querySelectorAll(".utensil .dropdown-ul li");
-    let utensilTags = [];
 
     utensilsLiElt.forEach(utensilLiElt => {
         utensilLiElt.addEventListener("click", (e) => {
@@ -118,6 +116,8 @@ function filterByUtensils() {
             utensilTags = utensilTags.concat(utensilTag);
             const searchedRecipes = getRecipesByUtensilsTags(utensilTags);
             refreshRecipes(searchedRecipes);
+            refreshDropdowns(searchedRecipes);
+            filterByUtensils();
         });
     });
 }
