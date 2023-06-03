@@ -136,13 +136,16 @@ function closeApplianceTag() {
 
         closeApplianceTagElt.addEventListener("click", () => {
             applianceTagElt.remove();
-
             const index = applianceTags.indexOf(applianceTagElt.textContent);
-            applianceTags.splice(index, 1);
+
+            if(index >= 0) {
+                applianceTags.splice(index, 1);
+            }
+            
             searchedRecipes = getRecipesByAppliancesTags(applianceTags);
             refreshRecipes(searchedRecipes);
             refreshDropdowns(searchedRecipes);
             filterByAppliances();
-        })
+        });
     });
 }
