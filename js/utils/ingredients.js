@@ -123,7 +123,7 @@ function closeIngredientTag() {
       ingredientTagElt.remove();
       const index = ingredientTags.indexOf(ingredientTagElt.textContent);
 
-      if(index >= 0) {
+      if (index >= 0) {
         ingredientTags.splice(index, 1);
       }
 
