@@ -1,7 +1,6 @@
 "use_strict";
 
 // DOM elements
-const ingredientTagElt = document.querySelector(".ingredient-tag");
 let ingredientTags = [];
 
 /**
@@ -61,11 +60,19 @@ function searchRecipesInIngredientsBar() {
       ingredientUlElt.innerHTML = "";
       setItemsDropdown(searchedIngredients, ingredientUlElt);
     } else {
-      ingredientUlElt.innerHTML = "";
-      setItemsDropdown(updatedIngredients, ingredientUlElt);
+      const ingredientTagElts = document.querySelectorAll(".ingredient-tag");
+
+      ingredientTagElts.forEach((ingredientTagElt) => {
+        const ingredientTag = ingredientTagElt.innerText;
+        ingredientTags = ingredientTags.concat(ingredientTag);
+      });
+      const searchedRecipes = getRecipesByIngredientsTags(ingredientTags);
+      refreshRecipes(searchedRecipes);
+      refreshDropdowns(searchedRecipes);
+      closeIngredientTag();
     }
 
-    filterByIngredients(searchedRecipes);
+    filterByIngredients();
   });
 }
 
@@ -97,6 +104,7 @@ function filterByIngredients() {
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeIngredientTag();
+
       filterByIngredients();
     });
   });

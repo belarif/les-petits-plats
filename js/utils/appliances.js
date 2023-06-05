@@ -1,7 +1,6 @@
 "use_strict";
 
 // DOM elements
-const applianceTagElt = document.querySelector(".appliance-tag");
 let applianceTags = [];
 
 /**
@@ -91,8 +90,16 @@ function searchRecipesInAppliancesBar() {
       applianceUlElt.innerHTML = "";
       setItemsDropdown(searchedAppliances, applianceUlElt);
     } else {
-      applianceUlElt.innerHTML = "";
-      setItemsDropdown(updatedApplicances, applianceUlElt);
+      const applianceTagElts = document.querySelectorAll(".appliance-tag");
+
+      applianceTagElts.forEach((applianceTagElt) => {
+        const applianceTag = applianceTagElt.innerText;
+        applianceTags = applianceTags.concat(applianceTag);
+      });
+      const searchedRecipes = getRecipesByAppliancesTags(applianceTags);
+      refreshRecipes(searchedRecipes);
+      refreshDropdowns(searchedRecipes);
+      closeApplianceTag();
     }
 
     filterByAppliances();
