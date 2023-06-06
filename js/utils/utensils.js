@@ -72,6 +72,28 @@ function getRecipesByUtensilsTags(utensilTags) {
   return results;
 }
 
+/**
+ *
+ * @param {string} keyword
+ * @returns
+ */
+function getRecipesByUtensil(keyword) {
+  const searchedUtensils = searchInUtensils(keyword);
+  const recipeByUtensil = recipes.filter((recipe) => {
+    let result = false;
+    recipe.ustensils.forEach((utensil) => {
+      const r = searchedUtensils.includes(utensil);
+      if (r) {
+        result = true;
+      }
+    });
+
+    return result;
+  });
+
+  return recipeByUtensil;
+}
+
 function setUtensilsInDropdown() {
   const utensils = getUtensils();
   setItemsDropdown(utensils, utensilUlElt);
@@ -83,8 +105,7 @@ function searchRecipesInUtensilsBar() {
   utensilsSearchElt.addEventListener("keyup", (e) => {
     let searchedUtensils = [];
     let keywordUtensil = e.target.value;
-    const searchedRecipes =
-      getRecipesByNameDescriptionAndIngredient(keywordUtensil);
+    const searchedRecipes = getRecipesByUtensil(keywordUtensil);
     const updatedUtensils = getUpdatedUtensils(searchedRecipes);
 
     filterByDropdown(updatedUtensils, searchedUtensils, keywordUtensil);

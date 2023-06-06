@@ -69,6 +69,28 @@ function getRecipesByAppliancesTags(applianceTags) {
   return results;
 }
 
+/**
+ *
+ * @param {string} keyword
+ * @returns
+ */
+function getRecipesByAppliance(keyword) {
+  const searchedAppliances = searchInAppliances(keyword);
+
+  const recipeByAppliance = recipes.filter((recipe) => {
+    let result = false;
+    const r = searchedAppliances.includes(recipe.appliance);
+
+    if (r) {
+      result = true;
+    }
+
+    return result;
+  });
+
+  return recipeByAppliance;
+}
+
 function setAppliancesInDropdown() {
   const appliances = getAppliances();
   setItemsDropdown(appliances, applianceUlElt);
@@ -80,8 +102,7 @@ function searchRecipesInAppliancesBar() {
   appliancesSearchElt.addEventListener("keyup", (e) => {
     let searchedAppliances = [];
     let keywordAppliance = e.target.value;
-    const searchedRecipes =
-      getRecipesByNameDescriptionAndIngredient(keywordAppliance);
+    const searchedRecipes = getRecipesByAppliance(keywordAppliance);
     const updatedApplicances = getUpdatedAppliances(searchedRecipes);
 
     filterByDropdown(updatedApplicances, searchedAppliances, keywordAppliance);
