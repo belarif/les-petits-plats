@@ -43,15 +43,23 @@ function refreshRecipes(searchedRecipes) {
 function refreshDropdowns(searchedRecipes) {
   ingredientUlElt.innerHTML = "";
   const updatedIngredients = getUpdatedIngredients(searchedRecipes);
-  setItemsDropdown(updatedIngredients, ingredientUlElt);
+  setItemsDropdown(
+    updatedIngredients,
+    ingredientUlElt,
+    getCurrentIngredientsTags()
+  );
 
   applianceUlElt.innerHTML = "";
   const updatedApplicances = getUpdatedAppliances(searchedRecipes);
-  setItemsDropdown(updatedApplicances, applianceUlElt);
+  setItemsDropdown(
+    updatedApplicances,
+    applianceUlElt,
+    getCurrentAppliancesTags()
+  );
 
   utensilUlElt.innerHTML = "";
   const updatedUtensils = getUpdatedUtensils(searchedRecipes);
-  setItemsDropdown(updatedUtensils, utensilUlElt);
+  setItemsDropdown(updatedUtensils, utensilUlElt /*getCurrentUtensilsTags */);
 }
 
 function init() {

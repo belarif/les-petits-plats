@@ -180,8 +180,7 @@ function searchRecipesInMainBar() {
     let keywordMainSearch = e.target.value;
 
     if (keywordMainSearch.length >= 3) {
-      const searchedRecipes =
-        getRecipesByNameDescriptionAndIngredient(keywordMainSearch);
+      const searchedRecipes = search(keywordMainSearch);
 
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
