@@ -1,7 +1,6 @@
 "use_strict";
 
 // DOM elements
-let ingredientTags = [];
 
 /**
  *
@@ -60,13 +59,7 @@ function searchRecipesInIngredientsBar() {
       ingredientUlElt.innerHTML = "";
       setItemsDropdown(searchedIngredients, ingredientUlElt);
     } else {
-      const ingredientTagElts = document.querySelectorAll(".ingredient-tag");
-
-      ingredientTagElts.forEach((ingredientTagElt) => {
-        const ingredientTag = ingredientTagElt.innerText;
-        ingredientTags = ingredientTags.concat(ingredientTag);
-      });
-      const searchedRecipes = getRecipesByIngredientsTags(ingredientTags);
+      const searchedRecipes = getRecipesByIngredientsTags();
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeIngredientTag();
@@ -76,7 +69,8 @@ function searchRecipesInIngredientsBar() {
   });
 }
 
-function getRecipesByIngredientsTags(ingredientTags) {
+function getRecipesByIngredientsTags() {
+  const ingredientTags = getCurrentIngredientsTags();
   let results = recipes;
   ingredientTags.forEach((ingredientTag) => {
     results = results.filter((recipe) => {
@@ -103,7 +97,6 @@ function filterByIngredients() {
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeIngredientTag();
-
       filterByIngredients();
     });
   });
@@ -128,15 +121,9 @@ function closeIngredientTag() {
 
     closeIngredientTagElt.addEventListener("click", () => {
       ingredientTagElt.remove();
-      const index = ingredientTags.indexOf(ingredientTagElt.textContent);
-
-      if (index >= 0) {
-        ingredientTags.splice(index, 1);
-      }
-
-      searchedRecipes = getRecipesByIngredientsTags(ingredientTags);
+      searchedRecipes = getRecipesByIngredientsTags();
       refreshRecipes(searchedRecipes);
-      refreshDropdowns(searchedRecipes, ingredientTags);
+      refreshDropdowns(searchedRecipes);
       filterByIngredients();
     });
   });
