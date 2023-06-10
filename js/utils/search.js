@@ -55,19 +55,23 @@ function getCurrentIngredientsTags() {
   const btns = document.querySelectorAll(".ingredient-tag button");
   return Array.from(btns).map((btn) => btn.textContent);
 }
+
 function getCurrentAppliancesTags() {
   const btns = document.querySelectorAll(".appliance-tag button");
   return Array.from(btns).map((btn) => btn.textContent);
 }
+
 function getCurrentKeyword() {
   const input = document.querySelector(".main-search");
   return input.textContent;
 }
+
 function cleanArrayItems(tagString, array) {
   const a = [tagString, ...array].filter((item) => item);
   const uniques = new Set(a);
   return Array.from(uniques);
 }
+
 function search(keyword, ingredientTag, applianceTag, utensilsTag) {
   if (!keyword) {
     keyword = getCurrentKeyword();
