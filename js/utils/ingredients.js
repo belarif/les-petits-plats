@@ -1,7 +1,5 @@
 "use_strict";
 
-// DOM elements
-
 /**
  *
  * @returns {object}
@@ -33,6 +31,27 @@ function getUpdatedIngredients(searchedRecipes) {
   });
 
   return Array.from(new Set(updatedIngredients));
+}
+
+/**
+ *
+ * @param {string} keyword
+ * @returns {object}
+ */
+function searchInIngredients(keyword) {
+  const ingredients = getIngredients();
+  let searchedIngredients = [];
+
+  ingredients.forEach((ingredient) => {
+    let regex = new RegExp(keyword, "ig");
+    let search = ingredient.match(regex);
+
+    if (search) {
+      searchedIngredients.unshift(ingredient);
+    }
+  });
+
+  return searchedIngredients;
 }
 
 function setIngredientsInDropdown() {

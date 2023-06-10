@@ -1,8 +1,5 @@
 "use_strict";
 
-// DOM elements
-let applianceTags = [];
-
 /**
  *
  * @returns {object}
@@ -52,12 +49,8 @@ function searchInAppliances(keyword) {
   return searchedAppliances;
 }
 
-/**
- *
- * @param {string} keyword
- * @returns
- */
-function getRecipesByAppliancesTags(applianceTags) {
+function getRecipesByAppliancesTags() {
+  const applianceTags = getCurrentAppliancesTags();
   let results = recipes;
   applianceTags.forEach((applianceTag) => {
     results = results.filter((recipe) => {
@@ -111,13 +104,7 @@ function searchRecipesInAppliancesBar() {
       applianceUlElt.innerHTML = "";
       setItemsDropdown(searchedAppliances, applianceUlElt);
     } else {
-      const applianceTagElts = document.querySelectorAll(".appliance-tag");
-
-      applianceTagElts.forEach((applianceTagElt) => {
-        const applianceTag = applianceTagElt.innerText;
-        applianceTags = applianceTags.concat(applianceTag);
-      });
-      const searchedRecipes = getRecipesByAppliancesTags(applianceTags);
+      const searchedRecipes = getRecipesByAppliancesTags();
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeApplianceTag();
@@ -137,7 +124,6 @@ function filterByAppliances() {
       displayApplianceTag(applianceLiElt);
 
       const applianceTag = e.target.innerText;
-      applianceTags = applianceTags.concat(applianceTag);
       const searchedRecipes = search(null, null, applianceTag);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
@@ -166,15 +152,9 @@ function closeApplianceTag() {
 
     closeApplianceTagElt.addEventListener("click", () => {
       applianceTagElt.remove();
-      const index = applianceTags.indexOf(applianceTagElt.textContent);
-
-      if (index >= 0) {
-        applianceTags.splice(index, 1);
-      }
-
-      searchedRecipes = getRecipesByAppliancesTags(applianceTags);
+      searchedRecipes = getRecipesByAppliancesTags();
       refreshRecipes(searchedRecipes);
-      refreshDropdowns(searchedRecipes, null, applianceTags);
+      refreshDropdowns(searchedRecipes);
       filterByAppliances();
     });
   });
