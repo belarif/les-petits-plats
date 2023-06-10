@@ -1,8 +1,5 @@
 "use_strict";
 
-// DOM elements
-let utensilTags = [];
-
 /**
  *
  * @returns {object}
@@ -59,7 +56,8 @@ function searchInUtensils(keyword) {
  * @param {string} keyword
  * @returns
  */
-function getRecipesByUtensilsTags(utensilTags) {
+function getRecipesByUtensilsTags() {
+  const utensilTags = getCurrentUtensilsTags();
   let results = recipes;
   utensilTags.forEach((utensilTag) => {
     results = results.filter((recipe) => {
@@ -114,13 +112,7 @@ function searchRecipesInUtensilsBar() {
       utensilUlElt.innerHTML = "";
       setItemsDropdown(searchedUtensils, utensilUlElt);
     } else {
-      const utensilTagElts = document.querySelectorAll(".utensil-tag");
-
-      utensilTagElts.forEach((utensilTagElt) => {
-        const utensilTag = utensilTagElt.innerText;
-        utensilTags = utensilTags.concat(utensilTag);
-      });
-      const searchedRecipes = getRecipesByUtensilsTags(utensilTags);
+      const searchedRecipes = getRecipesByUtensilsTags();
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeUtensilTag();
@@ -138,8 +130,7 @@ function filterByUtensils() {
       displayUtensilTag(utensilLiElt);
 
       const utensilTag = e.target.innerText;
-      utensilTags = utensilTags.concat(utensilTag);
-      const searchedRecipes = getRecipesByUtensilsTags(utensilTags);
+      searchedRecipes = search(null, null, null, utensilTag);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeUtensilTag();
@@ -167,13 +158,7 @@ function closeUtensilTag() {
 
     closeUtensilTagElt.addEventListener("click", () => {
       utensilTagElt.remove();
-      const index = utensilTags.indexOf(utensilTagElt.textContent);
-
-      if (index >= 0) {
-        utensilTags.splice(index, 1);
-      }
-
-      searchedRecipes = getRecipesByUtensilsTags(utensilTags);
+      searchedRecipes = getRecipesByUtensilsTags();
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       filterByUtensils();

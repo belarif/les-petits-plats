@@ -38,27 +38,6 @@ function getDescriptions() {
  * @param {string} keyword
  * @returns {object}
  */
-function searchInIngredients(keyword) {
-  const ingredients = getIngredients();
-  let searchedIngredients = [];
-
-  ingredients.forEach((ingredient) => {
-    let regex = new RegExp(keyword, "ig");
-    let search = ingredient.match(regex);
-
-    if (search) {
-      searchedIngredients.unshift(ingredient);
-    }
-  });
-
-  return searchedIngredients;
-}
-
-/**
- *
- * @param {string} keyword
- * @returns {object}
- */
 function seachInNames(keyword) {
   const names = getNames();
   let searchedNames = [];
@@ -198,4 +177,4 @@ function searchRecipesInMainBar() {
   });
 }
 
-searchRecipesInMainBar();
+// searchRecipesInMainBar();

@@ -61,6 +61,11 @@ function getCurrentAppliancesTags() {
   return Array.from(btns).map((btn) => btn.textContent);
 }
 
+function getCurrentUtensilsTags() {
+  const btns = document.querySelectorAll(".utensil-tag button");
+  return Array.from(btns).map((btn) => btn.textContent);
+}
+
 function getCurrentKeyword() {
   const input = document.querySelector(".main-search");
   return input.textContent;
@@ -72,7 +77,7 @@ function cleanArrayItems(tagString, array) {
   return Array.from(uniques);
 }
 
-function search(keyword, ingredientTag, applianceTag, utensilsTag) {
+function search(keyword, ingredientTag, applianceTag, utensilTag) {
   if (!keyword) {
     keyword = getCurrentKeyword();
   }
@@ -85,6 +90,9 @@ function search(keyword, ingredientTag, applianceTag, utensilsTag) {
     cleanArrayItems(applianceTag, [...getCurrentAppliancesTags()]),
     results
   );
-  // results = searchRecipesByUtensilsTags(utensilsTags, results);
+  results = searchRecipesByUtensilsTags(
+    cleanArrayItems(utensilTag, [...getCurrentUtensilsTags()]),
+    results
+  );
   return results;
 }
