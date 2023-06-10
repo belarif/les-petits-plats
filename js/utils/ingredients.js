@@ -92,8 +92,7 @@ function filterByIngredients() {
       displayIngredientTag(ingredientLiElt);
 
       const ingredientTag = e.target.innerText;
-      ingredientTags = ingredientTags.concat(ingredientTag);
-      searchedRecipes = getRecipesByIngredientsTags(ingredientTags);
+      searchedRecipes = search(null, ingredientTag);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeIngredientTag();
@@ -129,7 +128,7 @@ function closeIngredientTag() {
 
       searchedRecipes = getRecipesByIngredientsTags(ingredientTags);
       refreshRecipes(searchedRecipes);
-      refreshDropdowns(searchedRecipes);
+      refreshDropdowns(searchedRecipes, ingredientTags);
       filterByIngredients();
     });
   });
