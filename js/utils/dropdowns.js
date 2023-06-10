@@ -17,10 +17,13 @@ function filterByDropdown(itemsSearch, searchedItems, keyword) {
   });
 }
 
-function setItemsDropdown(items, ulElt) {
+function setItemsDropdown(items, ulElt, tags) {
+  // console.log("setItemsDropdown", items, ulElt, tags);
   items.forEach((item) => {
-    const liElt = document.createElement("li");
-    liElt.textContent = item;
-    ulElt.appendChild(liElt);
+    if (!tags || (tags && !tags.includes(item))) {
+      const liElt = document.createElement("li");
+      liElt.textContent = item;
+      ulElt.appendChild(liElt);
+    }
   });
 }

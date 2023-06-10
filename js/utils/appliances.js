@@ -138,7 +138,7 @@ function filterByAppliances() {
 
       const applianceTag = e.target.innerText;
       applianceTags = applianceTags.concat(applianceTag);
-      const searchedRecipes = getRecipesByAppliancesTags(applianceTags);
+      const searchedRecipes = search(null, null, applianceTag);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeApplianceTag();
@@ -174,7 +174,7 @@ function closeApplianceTag() {
 
       searchedRecipes = getRecipesByAppliancesTags(applianceTags);
       refreshRecipes(searchedRecipes);
-      refreshDropdowns(searchedRecipes);
+      refreshDropdowns(searchedRecipes, null, applianceTags);
       filterByAppliances();
     });
   });
