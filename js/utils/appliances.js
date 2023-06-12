@@ -129,6 +129,8 @@ function filterByAppliances() {
       refreshDropdowns(searchedRecipes);
       closeApplianceTag();
       filterByAppliances();
+      filterByIngredients();
+      filterByUtensils();
     });
   });
 }
@@ -150,9 +152,10 @@ function closeApplianceTag() {
   applianceTagElts.forEach((applianceTagElt) => {
     const closeApplianceTagElt = applianceTagElt.childNodes[1];
 
-    closeApplianceTagElt.addEventListener("click", () => {
+    closeApplianceTagElt.addEventListener("click", (e) => {
       applianceTagElt.remove();
-      searchedRecipes = getRecipesByAppliancesTags();
+      const applianceTag = e.target.innerText;
+      const searchedRecipes = search(null, null, applianceTag);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       filterByAppliances();
