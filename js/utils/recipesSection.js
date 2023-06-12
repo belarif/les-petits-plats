@@ -6,6 +6,7 @@ const applianceUlElt = document.querySelector(".appliance .dropdown-ul");
 const utensilUlElt = document.querySelector(".utensil .dropdown-ul");
 const rowCardElt = document.querySelector(".row-card");
 const recipeCardElt = document.querySelector(".recipe-cards");
+const noRecipesElt = document.querySelector(".no-recipes");
 
 /**
  *
@@ -133,26 +134,6 @@ function getRecipesByIngredient(keyword) {
   return recipeByIngredient;
 }
 
-/**
- *
- * @param {string} keyword
- * @returns {object}
- */
-function getRecipesByNameDescriptionAndIngredient(keyword) {
-  const recipesByNames = getRecipesByName(keyword);
-  const recipesByDescriptions = getRecipesByDescription(keyword);
-  const recipesByIngredients = getRecipesByIngredient(keyword);
-
-  let searchedRecipes = [];
-  searchedRecipes = searchedRecipes
-    .concat(recipesByNames)
-    .concat(recipesByDescriptions)
-    .concat(recipesByIngredients);
-  searchedRecipes = Array.from(new Set(searchedRecipes));
-
-  return searchedRecipes;
-}
-
 function searchRecipesInMainBar() {
   const mainSearch = document.querySelector(".main-search");
   mainSearch.addEventListener("keyup", (e) => {
@@ -160,6 +141,7 @@ function searchRecipesInMainBar() {
 
     if (keywordMainSearch.length >= 3) {
       const searchedRecipes = search(keywordMainSearch);
+
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
     } else {
@@ -167,6 +149,7 @@ function searchRecipesInMainBar() {
       ingredientUlElt.innerHTML = "";
       applianceUlElt.innerHTML = "";
       utensilUlElt.innerHTML = "";
+      noRecipesElt.style.display = "none";
       init();
     }
 

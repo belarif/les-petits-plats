@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {object} applianceTags
+ * @param {object} recipes
+ * @returns
+ */
 function searchRecipesByAppliancesTags(applianceTags, recipes) {
   let results = recipes;
   applianceTags.forEach((applianceTag) => {
@@ -7,9 +13,16 @@ function searchRecipesByAppliancesTags(applianceTags, recipes) {
       }
     });
   });
+
   return results;
 }
 
+/**
+ *
+ * @param {object} ingredientTags
+ * @param {object} recipes
+ * @returns
+ */
 function searchRecipesByIngredientsTags(ingredientTags, recipes) {
   let results = recipes;
   ingredientTags.forEach((ingredientTag) => {
@@ -23,6 +36,12 @@ function searchRecipesByIngredientsTags(ingredientTags, recipes) {
   return results;
 }
 
+/**
+ *
+ * @param {object} utensilTags
+ * @param {object} recipes
+ * @returns
+ */
 function searchRecipesByUtensilsTags(utensilTags, recipes) {
   let results = recipes;
   utensilTags.forEach((utensilTag) => {
@@ -36,6 +55,11 @@ function searchRecipesByUtensilsTags(utensilTags, recipes) {
   return results;
 }
 
+/**
+ *
+ * @param {string} keyword
+ * @returns
+ */
 function searchRecipesByNameDescriptionAndIngredient(keyword) {
   const recipesByNames = getRecipesByName(keyword);
   const recipesByDescriptions = getRecipesByDescription(keyword);
@@ -71,18 +95,33 @@ function getCurrentKeyword() {
   return input.value;
 }
 
+/**
+ *
+ * @param {string} tagString
+ * @param {array} array
+ * @returns {array}
+ */
 function cleanArrayItems(tagString, array) {
   const a = [tagString, ...array].filter((item) => item);
   const uniques = new Set(a);
+
   return Array.from(uniques);
 }
 
+/**
+ *
+ * @param {string} keyword
+ * @param {object} ingredientTag
+ * @param {object} applianceTag
+ * @param {object} utensilTag
+ * @returns {object}
+ */
 function search(keyword, ingredientTag, applianceTag, utensilTag) {
   if (!keyword) {
     keyword = getCurrentKeyword();
   }
-  let results = searchRecipesByNameDescriptionAndIngredient(keyword);
 
+  let results = searchRecipesByNameDescriptionAndIngredient(keyword);
   results = searchRecipesByIngredientsTags(
     cleanArrayItems(ingredientTag, [...getCurrentIngredientsTags()]),
     results
@@ -97,6 +136,10 @@ function search(keyword, ingredientTag, applianceTag, utensilTag) {
     cleanArrayItems(utensilTag, [...getCurrentUtensilsTags()]),
     results
   );
+
+  if (results.length === 0) {
+    noRecipesElt.style.display = "block";
+  }
 
   return results;
 }

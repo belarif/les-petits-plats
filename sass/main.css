@@ -16,7 +16,7 @@ body {
 }
 .header-page .input-group input,
 .header-page .input-group span {
-  background-color: #eeeeee;
+  background-color: #EEEEEE;
 }
 .header-page input[type=search] {
   border-right: none;
@@ -49,6 +49,7 @@ body {
   margin-bottom: 10px;
   border-radius: 5px;
   display: none;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .filter .ingredient-tag {
@@ -64,7 +65,9 @@ body {
   position: relative;
   border: none;
   border-radius: 5px;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   height: 50px;
   width: 240px;
   color: #fff;
@@ -170,13 +173,4 @@ body {
 }
 .recipe-cards .recipe-description p {
   width: 50%;
-}
-
-.no-recipes {
-  display: none;
-  color: #dc3545;
-  text-align: center;
-  padding-top: 100px;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=main.css.map */
