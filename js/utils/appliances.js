@@ -124,7 +124,8 @@ function filterByAppliances() {
       displayApplianceTag(applianceLiElt);
 
       const applianceTag = e.target.innerText;
-      const searchedRecipes = search(null, null, applianceTag);
+      const keyword = getCurrentKeyword();
+      const searchedRecipes = search(keyword, null, applianceTag);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeApplianceTag();

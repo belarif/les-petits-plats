@@ -68,7 +68,7 @@ function getCurrentUtensilsTags() {
 
 function getCurrentKeyword() {
   const input = document.querySelector(".main-search");
-  return input.textContent;
+  return input.value;
 }
 
 function cleanArrayItems(tagString, array) {
@@ -82,17 +82,21 @@ function search(keyword, ingredientTag, applianceTag, utensilTag) {
     keyword = getCurrentKeyword();
   }
   let results = searchRecipesByNameDescriptionAndIngredient(keyword);
+
   results = searchRecipesByIngredientsTags(
     cleanArrayItems(ingredientTag, [...getCurrentIngredientsTags()]),
     results
   );
+
   results = searchRecipesByAppliancesTags(
     cleanArrayItems(applianceTag, [...getCurrentAppliancesTags()]),
     results
   );
+
   results = searchRecipesByUtensilsTags(
     cleanArrayItems(utensilTag, [...getCurrentUtensilsTags()]),
     results
   );
+
   return results;
 }

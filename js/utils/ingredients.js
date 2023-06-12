@@ -112,7 +112,8 @@ function filterByIngredients() {
       displayIngredientTag(ingredientLiElt);
 
       const ingredientTag = e.target.innerText;
-      searchedRecipes = search(null, ingredientTag);
+      const keyword = getCurrentKeyword();
+      searchedRecipes = search(keyword, ingredientTag);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       closeIngredientTag();

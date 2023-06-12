@@ -160,7 +160,6 @@ function searchRecipesInMainBar() {
 
     if (keywordMainSearch.length >= 3) {
       const searchedRecipes = search(keywordMainSearch);
-
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
     } else {
@@ -177,4 +176,4 @@ function searchRecipesInMainBar() {
   });
 }
 
-// searchRecipesInMainBar();
+searchRecipesInMainBar();
