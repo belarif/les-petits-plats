@@ -36,15 +36,7 @@ function getUpdatedAppliances(searchedRecipes) {
 function searchInAppliances(keyword) {
   const appliances = getAppliances();
   let searchedAppliances = [];
-
-  appliances.forEach((appliance) => {
-    let regex = new RegExp(keyword, "ig");
-    let search = appliance.match(regex);
-
-    if (search) {
-      searchedAppliances.unshift(appliance);
-    }
-  });
+  searchInItems(appliances, keyword, searchedItems);
 
   return searchedAppliances;
 }

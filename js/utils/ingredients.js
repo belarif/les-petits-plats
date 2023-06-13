@@ -41,15 +41,7 @@ function getUpdatedIngredients(searchedRecipes) {
 function searchInIngredients(keyword) {
   const ingredients = getIngredients();
   let searchedIngredients = [];
-
-  ingredients.forEach((ingredient) => {
-    let regex = new RegExp(keyword, "ig");
-    let search = ingredient.match(regex);
-
-    if (search) {
-      searchedIngredients.unshift(ingredient);
-    }
-  });
+  searchInItems(ingredients, keyword, searchedIngredients);
 
   return searchedIngredients;
 }

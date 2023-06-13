@@ -1,3 +1,5 @@
+"use_strict";
+
 /**
  *
  * @param {object} applianceTags

@@ -38,15 +38,7 @@ function getUpdatedUtensils(searchedRecipes) {
 function searchInUtensils(keyword) {
   const utensils = getUtensils();
   let searchedUtensils = [];
-
-  utensils.forEach((utensil) => {
-    let regex = new RegExp(keyword, "ig");
-    let search = utensil.match(regex);
-
-    if (search) {
-      searchedUtensils.unshift(utensil);
-    }
-  });
+  searchInItems(utensils, keyword, searchedItems);
 
   return searchedUtensils;
 }
