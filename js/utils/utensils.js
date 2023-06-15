@@ -158,6 +158,8 @@ function closeUtensilTag() {
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       filterByUtensils();
+      filterByAppliances();
+      filterByIngredients();
     });
   });
 }

@@ -140,6 +140,8 @@ function closeIngredientTag() {
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       filterByIngredients();
+      filterByAppliances();
+      filterByUtensils();
     });
   });
 }
