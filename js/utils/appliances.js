@@ -152,6 +152,8 @@ function closeApplianceTag() {
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       filterByAppliances();
+      filterByIngredients();
+      filterByUtensils();
     });
   });
 }
