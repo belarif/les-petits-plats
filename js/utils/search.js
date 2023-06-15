@@ -141,6 +141,8 @@ function search(keyword, ingredientTag, applianceTag, utensilTag) {
 
   if (results.length === 0) {
     noRecipesElt.style.display = "block";
+  } else {
+    noRecipesElt.style.display = "none";
   }
 
   return results;
