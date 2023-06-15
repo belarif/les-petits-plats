@@ -38,7 +38,7 @@ function getUpdatedUtensils(searchedRecipes) {
 function searchInUtensils(keyword) {
   const utensils = getUtensils();
   let searchedUtensils = [];
-  searchInItems(utensils, keyword, searchedItems);
+  searchInItems(utensils, keyword, searchedUtensils);
 
   return searchedUtensils;
 }

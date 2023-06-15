@@ -36,7 +36,7 @@ function getUpdatedAppliances(searchedRecipes) {
 function searchInAppliances(keyword) {
   const appliances = getAppliances();
   let searchedAppliances = [];
-  searchInItems(appliances, keyword, searchedItems);
+  searchInItems(appliances, keyword, searchedAppliances);
 
   return searchedAppliances;
 }
