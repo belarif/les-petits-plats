@@ -150,7 +150,7 @@ function searchRecipesInMainBar() {
       applianceUlElt.innerHTML = "";
       utensilUlElt.innerHTML = "";
       noRecipesElt.style.display = "none";
-      init();
+      displayRecipesAndDropdownsContent();
     }
 
     filterByIngredients();
@@ -158,5 +158,3 @@ function searchRecipesInMainBar() {
     filterByUtensils();
   });
 }
-
-searchRecipesInMainBar();

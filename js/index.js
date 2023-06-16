@@ -62,14 +62,17 @@ function refreshDropdowns(searchedRecipes) {
   setItemsDropdown(updatedUtensils, utensilUlElt, getCurrentUtensilsTags());
 }
 
-function init() {
+function displayRecipesAndDropdownsContent() {
   const allRecipes = recipes;
 
   setRecipes(allRecipes);
   setIngredientsInDropdown();
   setAppliancesInDropdown();
   setUtensilsInDropdown();
+}
 
+function init() {
+  displayRecipesAndDropdownsContent();
   searchRecipesInMainBar();
   searchRecipesInIngredientsBar();
   searchRecipesInAppliancesBar();
