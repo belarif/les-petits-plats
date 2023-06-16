@@ -164,5 +164,3 @@ function searchRecipesInMainBar() {
     filterByUtensils();
   });
 }
-
-searchRecipesInMainBar();
