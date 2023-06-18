@@ -119,6 +119,7 @@ function cleanArrayItems(tagString, array) {
  * @returns {object}
  */
 function search(keyword, ingredientTag, applianceTag, utensilTag) {
+  console.log("appelé");
   if (!keyword) {
     keyword = getCurrentKeyword();
   }
