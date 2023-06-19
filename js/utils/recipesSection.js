@@ -125,19 +125,21 @@ function getRecipesByDescription(keyword) {
  */
 function getRecipesByIngredient(keyword) {
   const searchedIngredients = searchInIngredients(keyword);
-  const recipeByIngredient = recipes.filter((recipe) => {
+
+  const recipesByIngredient = recipes.filter((recipe) => {
     let result = false;
-    recipe.ingredients.forEach((ingredient) => {
+
+    for (let ingredient of recipe.ingredients) {
       const r = searchedIngredients.includes(ingredient.ingredient);
       if (r) {
         result = true;
       }
-    });
+    }
 
     return result;
   });
 
-  return recipeByIngredient;
+  return recipesByIngredient;
 }
 
 function searchRecipesInMainBar() {
