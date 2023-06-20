@@ -70,9 +70,6 @@ function searchRecipesInIngredientsBar() {
       ingredientUlElt.innerHTML = "";
       setItemsDropdown(searchedIngredients, ingredientUlElt);
     } else {
-      const searchedRecipes = getRecipesByIngredientsTags();
-      refreshRecipes(searchedRecipes);
-      refreshDropdowns(searchedRecipes);
       closeIngredientTag();
     }
 
