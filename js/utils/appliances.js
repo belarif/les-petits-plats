@@ -41,19 +41,6 @@ function searchInAppliances(keyword) {
   return searchedAppliances;
 }
 
-function getRecipesByAppliancesTags() {
-  const applianceTags = getCurrentAppliancesTags();
-  let results = recipes;
-  applianceTags.forEach((applianceTag) => {
-    results = results.filter((recipe) => {
-      if (recipe.appliance === applianceTag) {
-        return recipe;
-      }
-    });
-  });
-  return results;
-}
-
 /**
  *
  * @param {string} keyword
