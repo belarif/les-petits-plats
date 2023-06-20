@@ -96,9 +96,6 @@ function searchRecipesInAppliancesBar() {
       applianceUlElt.innerHTML = "";
       setItemsDropdown(searchedAppliances, applianceUlElt);
     } else {
-      // const searchedRecipes = getRecipesByAppliancesTags();
-      // refreshRecipes(searchedRecipes);
-      // refreshDropdowns(searchedRecipes);
       closeApplianceTag();
     }
 
