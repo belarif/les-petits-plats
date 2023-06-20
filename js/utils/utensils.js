@@ -104,9 +104,6 @@ function searchRecipesInUtensilsBar() {
       utensilUlElt.innerHTML = "";
       setItemsDropdown(searchedUtensils, utensilUlElt);
     } else {
-      const searchedRecipes = getRecipesByUtensilsTags();
-      refreshRecipes(searchedRecipes);
-      refreshDropdowns(searchedRecipes);
       closeUtensilTag();
     }
 
