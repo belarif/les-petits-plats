@@ -77,20 +77,6 @@ function searchRecipesInIngredientsBar() {
   });
 }
 
-function getRecipesByIngredientsTags() {
-  const ingredientTags = getCurrentIngredientsTags();
-  let results = recipes;
-  ingredientTags.forEach((ingredientTag) => {
-    results = results.filter((recipe) => {
-      const r = recipe.ingredients.find((ingredient) => {
-        return ingredient.ingredient.includes(ingredientTag);
-      });
-      return r ? r : false;
-    });
-  });
-  return results;
-}
-
 function filterByIngredients() {
   const ingredientsLiElt = document.querySelectorAll(
     ".ingredient .dropdown-ul li"

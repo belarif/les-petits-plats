@@ -48,25 +48,6 @@ function searchInUtensils(keyword) {
  * @param {string} keyword
  * @returns
  */
-function getRecipesByUtensilsTags() {
-  const utensilTags = getCurrentUtensilsTags();
-  let results = recipes;
-  utensilTags.forEach((utensilTag) => {
-    results = results.filter((recipe) => {
-      const r = recipe.ustensils.find((ustensil) => {
-        return ustensil.includes(utensilTag);
-      });
-      return r ? r : false;
-    });
-  });
-  return results;
-}
-
-/**
- *
- * @param {string} keyword
- * @returns
- */
 function getRecipesByUtensil(keyword) {
   const searchedUtensils = searchInUtensils(keyword);
   const recipeByUtensil = recipes.filter((recipe) => {
