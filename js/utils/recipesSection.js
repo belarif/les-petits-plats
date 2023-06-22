@@ -153,12 +153,18 @@ function searchRecipesInMainBar() {
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
     } else {
-      rowCardElt.innerHTML = "";
-      ingredientUlElt.innerHTML = "";
-      applianceUlElt.innerHTML = "";
-      utensilUlElt.innerHTML = "";
-      noRecipesElt.style.display = "none";
-      displayRecipesAndDropdownsContent();
+      const ingredientsTags = getCurrentIngredientsTags();
+      const applianceTags = getCurrentAppliancesTags();
+      const utensilsTags = getCurrentUtensilsTags();
+      if (
+        ingredientsTags.length > 0 ||
+        applianceTags.length > 0 ||
+        utensilsTags.length > 0
+      ) {
+        const searchedRecipes = search();
+        refreshRecipes(searchedRecipes);
+        refreshDropdowns(searchedRecipes);
+      }
     }
 
     filterByIngredients();
