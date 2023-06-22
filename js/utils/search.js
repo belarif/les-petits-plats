@@ -110,6 +110,15 @@ function cleanArrayItems(tagString, array) {
   return Array.from(uniques);
 }
 
+function validateEntry(str) {
+  var letters =
+    /[^a-zA-Z'áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+/;
+  if (str.match(letters)) {
+    return false;
+  }
+  return true;
+}
+
 /**
  *
  * @param {string} keyword
@@ -119,7 +128,7 @@ function cleanArrayItems(tagString, array) {
  * @returns {object}
  */
 function search(keyword, ingredientTag, applianceTag, utensilTag) {
-  if (!keyword) {
+  if (!keyword && validateEntry(keyword)) {
     keyword = getCurrentKeyword();
   }
 
