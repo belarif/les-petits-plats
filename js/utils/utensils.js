@@ -132,7 +132,8 @@ function closeUtensilTag() {
     closeUtensilTagElt.addEventListener("click", (e) => {
       utensilTagElt.remove();
       const utensilTag = e.target.innerText;
-      searchedRecipes = search(null, null, null, utensilTag);
+      const keyword = getCurrentKeyword();
+      searchedRecipes = search(keyword, null, null, utensilTag);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       filterByUtensils();
