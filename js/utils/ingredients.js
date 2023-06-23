@@ -119,7 +119,8 @@ function closeIngredientTag() {
     closeIngredientTagElt.addEventListener("click", (e) => {
       ingredientTagElt.remove();
       const ingredientTag = e.target.innerText;
-      searchedRecipes = search(null, ingredientTag);
+      const keyword = getCurrentKeyword();
+      searchedRecipes = search(keyword, ingredientTag);
       refreshRecipes(searchedRecipes);
       refreshDropdowns(searchedRecipes);
       filterByIngredients();

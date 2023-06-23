@@ -153,9 +153,12 @@ function searchRecipesInMainBar() {
         applianceTags.length > 0 ||
         utensilsTags.length > 0
       ) {
-        const searchedRecipes = search();
+        const keyword = getCurrentKeyword();
+        const searchedRecipes = search(keyword);
         refreshRecipes(searchedRecipes);
         refreshDropdowns(searchedRecipes);
+      } else {
+        displayRecipesAndDropdownsContent();
       }
     }
 

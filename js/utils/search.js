@@ -110,10 +110,10 @@ function cleanArrayItems(tagString, array) {
   return Array.from(uniques);
 }
 
-function validateEntry(str) {
-  var letters =
+function validateEntry(keyword) {
+  let letters =
     /[^a-zA-Z'áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ ]+/;
-  if (str.match(letters)) {
+  if (keyword.match(letters)) {
     return false;
   }
   return true;
