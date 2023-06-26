@@ -1,0 +1,48 @@
+"use_strict";
+
+/**
+ *
+ * @param {object} itemsSearch
+ * @param {object} searchedItems
+ * @param {string} keyword
+ */
+function filterByDropdown(itemsSearch, searchedItems, keyword) {
+  itemsSearch.forEach((item) => {
+    let regex = new RegExp(keyword, "ig");
+    let search = item.match(regex);
+
+    if (search) {
+      searchedItems.unshift(item);
+    }
+  });
+}
+
+function setItemsDropdown(items, ulElt, tags) {
+  items.forEach((item) => {
+    if (!tags || (tags && !tags.includes(item))) {
+      const liElt = document.createElement("li");
+      liElt.textContent = item;
+      ulElt.appendChild(liElt);
+    }
+  });
+}
+
+/**
+ *
+ * @param {object} items
+ * @param {string} keyword
+ * @param {object} searchedItems
+ * @returns {object}
+ */
+function searchInItems(items, keyword, searchedItems) {
+  items.forEach((item) => {
+    let regex = new RegExp(keyword, "ig");
+    let search = item.match(regex);
+
+    if (search) {
+      searchedItems.unshift(item);
+    }
+  });
+
+  return searchedItems;
+}
