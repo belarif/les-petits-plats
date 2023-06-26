@@ -1,53 +1,4 @@
-// ingredient filter elements
-const dropdownIngredientUlElt = document.querySelector(
-  ".ingredient .dropdown-ul"
-);
-const dropdownIngredientElt = document.querySelector(
-  ".ingredient .dropdown-wrapper"
-);
-const chevronsIngredientElt = document.querySelector(".ingredient .chevrons");
-const filterIngredientLabelElt = document.querySelector(
-  ".ingredient .dropdown-label"
-);
-const searchIngredientElt = document.querySelector(".ingredient .search");
-const chevronUpIngredientElt = document.querySelector(
-  ".ingredient .bi-chevron-up"
-);
-const chevronDownIngredientElt = document.querySelector(
-  ".ingredient .bi-chevron-down"
-);
-
-// appliance filter elements
-const dropdownApplianceUlElt = document.querySelector(
-  ".appliance .dropdown-ul"
-);
-const dropdownApplianceElt = document.querySelector(
-  ".appliance .dropdown-wrapper"
-);
-const chevronsApplianceElt = document.querySelector(".appliance .chevrons");
-const filterApplianceLabelElt = document.querySelector(
-  ".appliance .dropdown-label"
-);
-const searchApplianceElt = document.querySelector(".appliance .search");
-const chevronUpApplianceElt = document.querySelector(
-  ".appliance .bi-chevron-up"
-);
-const chevronDownApplianceElt = document.querySelector(
-  ".appliance .bi-chevron-down"
-);
-
-// utensil filter elements
-const dropdownUtensilUlElt = document.querySelector(".utensil .dropdown-ul");
-const dropdownUtensilElt = document.querySelector(".utensil .dropdown-wrapper");
-const chevronsUtensilElt = document.querySelector(".utensil .chevrons");
-const filterUtensilLabelElt = document.querySelector(
-  ".utensil .dropdown-label"
-);
-const searchUtensilElt = document.querySelector(".utensil .search");
-const chevronUpUtensilElt = document.querySelector(".utensil .bi-chevron-up");
-const chevronDownUtensilElt = document.querySelector(
-  ".utensil .bi-chevron-down"
-);
+"use_strict";
 
 function openDropdownList(
   dropdownElt,
@@ -81,85 +32,125 @@ function closeDropdownList(
   searchElt.style.display = "none";
 }
 
-function navigateIngredientDropdown() {
+function navigateDropdown(
+  chevronsElt,
+  dropdownElt,
+  dropdownUlElt,
+  filterLabelElt,
+  searchElt,
+  chevronUpElt,
+  chevronDownElt
+) {
   let direction = false;
-  chevronsIngredientElt.addEventListener("click", () => {
+  chevronsElt.addEventListener("click", () => {
     if (direction === false) {
       openDropdownList(
-        dropdownIngredientElt,
-        dropdownIngredientUlElt,
-        filterIngredientLabelElt,
-        searchIngredientElt,
-        chevronUpIngredientElt,
-        chevronDownIngredientElt
+        dropdownElt,
+        dropdownUlElt,
+        filterLabelElt,
+        searchElt,
+        chevronUpElt,
+        chevronDownElt
       );
       direction = true;
     } else {
       closeDropdownList(
-        dropdownIngredientElt,
-        dropdownIngredientUlElt,
-        filterIngredientLabelElt,
-        searchIngredientElt,
-        chevronUpIngredientElt,
-        chevronDownIngredientElt
+        dropdownElt,
+        dropdownUlElt,
+        filterLabelElt,
+        searchElt,
+        chevronUpElt,
+        chevronDownElt
       );
       direction = false;
     }
   });
+}
+
+function navigateIngredientDropdown() {
+  const dropdownIngredientUlElt = document.querySelector(
+    ".ingredient .dropdown-ul"
+  );
+  const dropdownIngredientElt = document.querySelector(
+    ".ingredient .dropdown-wrapper"
+  );
+  const chevronsIngredientElt = document.querySelector(".ingredient .chevrons");
+  const filterIngredientLabelElt = document.querySelector(
+    ".ingredient .dropdown-label"
+  );
+  const searchIngredientElt = document.querySelector(".ingredient .search");
+  const chevronUpIngredientElt = document.querySelector(
+    ".ingredient .bi-chevron-up"
+  );
+  const chevronDownIngredientElt = document.querySelector(
+    ".ingredient .bi-chevron-down"
+  );
+
+  navigateDropdown(
+    chevronsIngredientElt,
+    dropdownIngredientElt,
+    dropdownIngredientUlElt,
+    filterIngredientLabelElt,
+    searchIngredientElt,
+    chevronUpIngredientElt,
+    chevronDownIngredientElt
+  );
 }
 
 function navigateApplianceDropdown() {
-  let direction = false;
-  chevronsApplianceElt.addEventListener("click", () => {
-    if (direction === false) {
-      openDropdownList(
-        dropdownApplianceElt,
-        dropdownApplianceUlElt,
-        filterApplianceLabelElt,
-        searchApplianceElt,
-        chevronUpApplianceElt,
-        chevronDownApplianceElt
-      );
-      direction = true;
-    } else {
-      closeDropdownList(
-        dropdownApplianceElt,
-        dropdownApplianceUlElt,
-        filterApplianceLabelElt,
-        searchApplianceElt,
-        chevronUpApplianceElt,
-        chevronDownApplianceElt
-      );
-      direction = false;
-    }
-  });
+  const dropdownApplianceUlElt = document.querySelector(
+    ".appliance .dropdown-ul"
+  );
+  const dropdownApplianceElt = document.querySelector(
+    ".appliance .dropdown-wrapper"
+  );
+  const chevronsApplianceElt = document.querySelector(".appliance .chevrons");
+  const filterApplianceLabelElt = document.querySelector(
+    ".appliance .dropdown-label"
+  );
+  const searchApplianceElt = document.querySelector(".appliance .search");
+  const chevronUpApplianceElt = document.querySelector(
+    ".appliance .bi-chevron-up"
+  );
+  const chevronDownApplianceElt = document.querySelector(
+    ".appliance .bi-chevron-down"
+  );
+
+  navigateDropdown(
+    chevronsApplianceElt,
+    dropdownApplianceElt,
+    dropdownApplianceUlElt,
+    filterApplianceLabelElt,
+    searchApplianceElt,
+    chevronUpApplianceElt,
+    chevronDownApplianceElt
+  );
 }
 
 function navigateUtensilDropdown() {
-  let direction = false;
-  chevronsUtensilElt.addEventListener("click", () => {
-    if (direction === false) {
-      openDropdownList(
-        dropdownUtensilElt,
-        dropdownUtensilUlElt,
-        filterUtensilLabelElt,
-        searchUtensilElt,
-        chevronUpUtensilElt,
-        chevronDownUtensilElt
-      );
-      direction = true;
-    } else {
-      closeDropdownList(
-        dropdownUtensilElt,
-        dropdownUtensilUlElt,
-        filterUtensilLabelElt,
-        searchUtensilElt,
-        chevronUpUtensilElt,
-        chevronDownUtensilElt
-      );
-      direction = false;
-    }
-  });
+  const dropdownUtensilUlElt = document.querySelector(".utensil .dropdown-ul");
+  const dropdownUtensilElt = document.querySelector(
+    ".utensil .dropdown-wrapper"
+  );
+  const chevronsUtensilElt = document.querySelector(".utensil .chevrons");
+  const filterUtensilLabelElt = document.querySelector(
+    ".utensil .dropdown-label"
+  );
+  const searchUtensilElt = document.querySelector(".utensil .search");
+  const chevronUpUtensilElt = document.querySelector(".utensil .bi-chevron-up");
+  const chevronDownUtensilElt = document.querySelector(
+    ".utensil .bi-chevron-down"
+  );
+
+  navigateDropdown(
+    chevronsUtensilElt,
+    dropdownUtensilElt,
+    dropdownUtensilUlElt,
+    filterUtensilLabelElt,
+    searchUtensilElt,
+    chevronUpUtensilElt,
+    chevronDownUtensilElt
+  );
 }
 
 navigateIngredientDropdown();
