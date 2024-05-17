@@ -35,7 +35,11 @@ function addCardHeaderDiv(cardHeaderDivElt, cardDivElt) {
  * @param {object} recipeImgElt
  * @param {object} cardHeaderDivElt
  */
-function addRecipeImg(recipeImgElt, cardHeaderDivElt) {
+function addRecipeImg(recipeImgElt, cardHeaderDivElt, image) {
+  recipeImgElt.setAttribute("src", `assets/recipe-images/${image}`);
+  recipeImgElt.style.width = "100%";
+  recipeImgElt.style.height = "100%";
+  recipeImgElt.style.objectFit = "cover";
   cardHeaderDivElt.appendChild(recipeImgElt);
 }
 
@@ -170,7 +174,7 @@ function recipeCardsFactory(recipe) {
     addColDiv(colDivElt, rowCardElt);
     addCardDiv(cardDivElt, colDivElt);
     addCardHeaderDiv(cardHeaderDivElt, cardDivElt);
-    addRecipeImg(recipeImgElt, cardHeaderDivElt);
+    addRecipeImg(recipeImgElt, cardHeaderDivElt, recipe.image); //////////////////////////////
     addCardBodyDiv(cardBodyDivElt, cardDivElt);
     addHeaderCardBody(headerCardBodyElt, cardBodyDivElt);
     addRecipeName(recipeNameElt, headerCardBodyElt, recipe.name);
