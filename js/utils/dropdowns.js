@@ -35,14 +35,14 @@ function setItemsDropdown(items, ulElt, tags) {
  * @returns {object}
  */
 function searchInItems(items, keyword, searchedItems) {
-  items.forEach((item) => {
+  for (let item of items) {
     let regex = new RegExp(keyword, "ig");
     let search = item.match(regex);
 
     if (search) {
       searchedItems.unshift(item);
     }
-  });
+  }
 
   return searchedItems;
 }

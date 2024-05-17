@@ -6,12 +6,12 @@
  */
 function getIngredients() {
   let ingredients = [];
-  recipes.forEach((recipe) => {
-    ingredients = [
-      ...ingredients,
-      ...recipe.ingredients.map((ingredient) => ingredient.ingredient),
-    ];
-  });
+
+  for (let recipe of recipes) {
+    for (let ingredient of recipe.ingredients) {
+      ingredients = ingredients.concat(ingredient.ingredient);
+    }
+  }
 
   return Array.from(new Set(ingredients));
 }

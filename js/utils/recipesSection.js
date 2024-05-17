@@ -14,9 +14,10 @@ const noRecipesElt = document.querySelector(".no-recipes");
  */
 function getNames() {
   let names = [];
-  recipes.forEach((recipe) => {
-    names = names.concat(recipe.name);
-  });
+
+  for (let i = 0; i < recipes.length; i++) {
+    names = names.concat(recipes[i].name);
+  }
 
   return Array.from(new Set(names));
 }
@@ -27,9 +28,10 @@ function getNames() {
  */
 function getDescriptions() {
   let descriptions = [];
-  recipes.forEach((recipe) => {
-    descriptions = descriptions.concat(recipe.description);
-  });
+
+  for (let i = 0; i < recipes.length; i++) {
+    descriptions = descriptions.concat(recipes[i].description);
+  }
 
   return Array.from(new Set(descriptions));
 }
@@ -39,17 +41,18 @@ function getDescriptions() {
  * @param {string} keyword
  * @returns {object}
  */
-function seachInNames(keyword) {
+function searchInNames(keyword) {
   const names = getNames();
   let searchedNames = [];
-  names.forEach((name) => {
+
+  for (let name of names) {
     let regex = new RegExp(keyword, "ig");
     let search = name.match(regex);
 
     if (search) {
       searchedNames.unshift(name);
     }
-  });
+  }
 
   return searchedNames;
 }
@@ -62,14 +65,15 @@ function seachInNames(keyword) {
 function searchInDescriptions(keyword) {
   const descriptions = getDescriptions();
   let searchedDescriptions = [];
-  descriptions.forEach((description) => {
+
+  for (let description of descriptions) {
     let regex = new RegExp(keyword, "ig");
     let search = description.match(regex);
 
     if (search) {
       searchedDescriptions.unshift(description);
     }
-  });
+  }
 
   return searchedDescriptions;
 }
@@ -80,15 +84,16 @@ function searchInDescriptions(keyword) {
  * @returns {object}
  */
 function getRecipesByName(keyword) {
-  const searchedNames = seachInNames(keyword);
+  const searchedNames = searchInNames(keyword);
   let recipesByName = [];
 
-  searchedNames.forEach((name) => {
-    const recipeByName = recipes.filter((recipe) => {
-      return recipe.name === name;
-    });
-    recipesByName = recipesByName.concat(recipeByName);
-  });
+  for (let name of searchedNames) {
+    for (let recipe of recipes) {
+      if (recipe.name === name) {
+        recipesByName = recipesByName.concat(recipe);
+      }
+    }
+  }
 
   return recipesByName;
 }
@@ -102,12 +107,13 @@ function getRecipesByDescription(keyword) {
   const searchedDescriptions = searchInDescriptions(keyword);
   let recipesByDescription = [];
 
-  searchedDescriptions.forEach((description) => {
-    const recipeByDescription = recipes.filter((recipe) => {
-      return recipe.description === description;
-    });
-    recipesByDescription = recipesByDescription.concat(recipeByDescription);
-  });
+  for (let description of searchedDescriptions) {
+    for (let recipe of recipes) {
+      if (recipe.description === description) {
+        recipesByDescription = recipesByDescription.concat(recipe);
+      }
+    }
+  }
 
   return recipesByDescription;
 }
@@ -119,19 +125,21 @@ function getRecipesByDescription(keyword) {
  */
 function getRecipesByIngredient(keyword) {
   const searchedIngredients = searchInIngredients(keyword);
-  const recipeByIngredient = recipes.filter((recipe) => {
+
+  const recipesByIngredient = recipes.filter((recipe) => {
     let result = false;
-    recipe.ingredients.forEach((ingredient) => {
+
+    for (let ingredient of recipe.ingredients) {
       const r = searchedIngredients.includes(ingredient.ingredient);
       if (r) {
         result = true;
       }
-    });
+    }
 
     return result;
   });
 
-  return recipeByIngredient;
+  return recipesByIngredient;
 }
 
 function searchRecipesInMainBar() {
